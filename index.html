@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeevan Jyoti Srivastava | Engineering Leader & Architect</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ===== LEFT PANEL ===== -->
+    <aside class="left-panel" id="leftPanel">
+        <div class="lp-inner">
+
+            <div class="lp-top">
+                <a href="#about" class="lp-name">Jeevan Jyoti<br>Srivastava</a>
+                <p class="lp-role">Engineering Leader & Architect</p>
+                <p class="lp-bio">
+                    I build and scale high-performing engineering teams, focusing on robust backend platforms, cloud
+                    infrastructure, and AI systems.
+                </p>
+            </div>
+
+            <nav class="lp-nav" aria-label="Page sections">
+                <a href="#about" class="lp-nav-link active"><span class="nav-line"></span>About</a>
+                <a href="#work" class="lp-nav-link"><span class="nav-line"></span>Work</a>
+                <a href="#writing" class="lp-nav-link"><span class="nav-line"></span>Writing</a>
+            </nav>
+
+            <div class="lp-socials">
+                <a href="https://github.com/jeevanjsrivastava" target="_blank" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/jeevanjsrivastava" target="_blank" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="https://x.com/thejeevan" target="_blank" aria-label="X (Twitter)"><i
+                        class="fa-brands fa-x-twitter"></i></a>
+                <a href="mailto:hello@jeevansrivastava.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <a href="#about" class="mobile-name">JJS</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="#about" class="mobile-nav-link">About</a>
+            <a href="#work" class="mobile-nav-link">Work</a>
+            <a href="#writing" class="mobile-nav-link">Writing</a>
+        </nav>
+    </header>
+
+    <!-- ===== RIGHT PANEL ===== -->
+    <main class="right-panel">
+
+        <div class="boot-sequence" id="bootSequence"
+            style="font-size: 0.8rem; color: var(--dim); margin-bottom: 1.5rem; line-height: 1.5;">
+            <p class="boot-line" style="opacity: 0; transition: opacity 0.2s ease;">Last login:
+                <script>document.write(new Date().toDateString())</script> on ttys001
+            </p>
+            <p class="boot-line" style="opacity: 0; transition: opacity 0.2s ease;">jeevan@mbp ~ % ./start_portfolio.sh</p>
+            <p class="boot-line" style="opacity: 0; transition: opacity 0.2s ease; color: var(--green);">[OK] Loading modules...</p>
+            <p class="boot-line" style="opacity: 0; transition: opacity 0.2s ease; color: var(--green);">[OK] Initializing session...</p>
+        </div>
+
+        <!-- ABOUT -->
+        <section id="about" class="rp-section" style="padding-top: 0.5rem;">
+            <h2 class="section-label"><span class="dollar">$</span> whoami</h2>
+            <div class="about-body">
+                <p class="about-lead" style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    > I am <span id="typewriter" class="accent">a System Architect</span><span
+                        style="animation: blink 1s step-end infinite;">_</span>
+                </p>
+                <p>
+                    With <span class="accent stat-hl">14+ years</span> of experience designing, scaling, and optimizing
+                    robust systems, I specialize in cloud infrastructure, DevOps, and backend engineering. I take pride
+                    in building solutions from the ground up—from high-concurrency data pipelines to video streaming
+                    services and AI-driven applications.
+                </p>
+                <p>
+                    I thrive at the intersection of complex architecture and tangible business outcomes, where elegant
+                    technical design meets real-world constraints. Currently, I lead product engineering at <a
+                        href="https://uolo.com" target="_blank" class="inline-link">Uolo.com</a>. I love tackling deep
+                    systemic challenges; recently, I spearheaded an infrastructure initiative that untangled critical
+                    performance bottlenecks—driving peak response times down from <span class="stat-hl">~19
+                        seconds</span> to <span class="stat-hl">&lt;500ms</span>, expanding traffic capacity by <span
+                        class="stat-hl">10x</span>, and reducing monthly cloud spend by <span class="stat-hl">nearly
+                        25%</span> through precise architectural right-sizing.
+                </p>
+            </div>
+        </section>
+
+        <!-- RECENT WORK -->
+        <section id="work" class="rp-section">
+            <h2 class="section-label"><span class="dollar">$</span> ls ./recent-work/</h2>
+
+            <div class="proj-grid">
+
+                <div class="proj-card">
+                    <div class="proj-header">
+                        <span class="proj-num">01</span>
+                        <h3>AI & Voice Agent Systems</h3>
+                    </div>
+                    <p>Built and optimized multi-agent AI systems featuring Voice Activity Detection (VAD),
+                        Speech-to-Text (STT), noise filtering, TurnSense ONNX models, and ultra-low latency Cartesia TTS
+                        integrations.</p>
+                    <div class="proj-tags"><span>Python</span><span>ONNX</span><span>WebRTC</span><span>TTS</span></div>
+                </div>
+
+                <div class="proj-card">
+                    <div class="proj-header">
+                        <span class="proj-num">02</span>
+                        <h3>High-Performance Backend & Caching</h3>
+                    </div>
+                    <p>Led Redis cluster optimizations, including right-sizing infrastructure and tuning cache retrieval
+                        to handle high-concurrency endpoints. Resolved critical performance bottlenecks in core
+                        platforms (e.g., Tekie), driving peak response times down from <span class="stat-hl">~19
+                            seconds</span> to <span class="stat-hl">&lt;500ms</span> and reducing 5XX error rates from
+                        <span class="stat-hl">3.9%</span> to <span class="stat-hl">near-zero</span>.
+                    </p>
+                    <div class="proj-tags">
+                        <span>Node.js</span><span>Redis</span><span>AWS</span><span>Scalability</span>
+                    </div>
+                </div>
+
+                <div class="proj-card">
+                    <div class="proj-header">
+                        <span class="proj-num">03</span>
+                        <h3>Cloud Infrastructure & Cost Optimization</h3>
+                    </div>
+                    <p>Executed major AWS infrastructure cost optimization initiatives. Avoided expensive hardware
+                        band-aids through strategic architectural improvements, successfully recovering <span
+                            class="stat-hl">$150/mo</span> per cluster while enabling <span class="stat-hl">5-10x</span>
+                        more traffic capacity on existing hardware.</p>
+                    <div class="proj-tags"><span>AWS</span><span>DevOps</span><span>CloudWatch</span><span>FinOps</span>
+                    </div>
+                </div>
+
+                <div class="proj-card">
+                    <div class="proj-header">
+                        <span class="proj-num">04</span>
+                        <h3>Enterprise Platform Integrations</h3>
+                    </div>
+                    <p>Developed robust pipelines for third-party platforms, including Zoho CRM ticketing systems,
+                        automated WhatsApp messaging via cron jobs, and custom Grafana MCP servers.</p>
+                    <div class="proj-tags"><span>APIs</span><span>Cron</span><span>Grafana</span><span>Zoho</span></div>
+                </div>
+
+                <div class="proj-card" style="grid-column: 1 / -1;">
+                    <div class="proj-header">
+                        <span class="proj-num">05</span>
+                        <h3>Internal Platforms & Architecture</h3>
+                    </div>
+                    <p>Architected and scaled complex internal platforms, focusing on robust data processing pipelines
+                        and distributed event scheduling engines. These architectural improvements increased processing
+                        reliability from 94% to 99.9% and reduced scheduling latency by 60%, empowering cross-functional
+                        business operations.</p>
+                    <div class="proj-tags"><span>System Architecture</span><span>Data
+                            Engineering</span><span>Security</span><span>Platform Scaling</span></div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+
+        <!-- WRITING -->
+        <section id="writing" class="rp-section">
+            <h2 class="section-label"><span class="dollar">$</span> ls ./writing/</h2>
+
+            <div class="proj-grid">
+
+                <div class="proj-card">
+                    <div class="proj-header">
+                        <span class="proj-num">01</span>
+                        <h3><a href="https://medium.com/@thejeevan/the-60-second-bottleneck-how-unblocking-node-js-saved-our-app-under-pressure-41afce2d16ce"
+                                target="_blank" style="color: var(--text); text-decoration: none;">The 60-Second
+                                Bottleneck: How Unblocking Node.js Saved Our App</a></h3>
+                    </div>
+                    <p>A deep dive into how we resolved a massive production outage by eliminating blocking operations
+                        and re-architecting our Redis and load balancing layers.</p>
+                    <div class="proj-tags"><span>Node.js</span><span>Performance</span><span>AWS</span></div>
+                </div>
+
+                <div class="proj-card">
+                    <div class="proj-header">
+                        <span class="proj-num">02</span>
+                        <h3><a href="https://medium.com/@thejeevan/vibe-coding-is-fun-cleaning-up-after-it-is-not-7399695b48f7"
+                                target="_blank" style="color: var(--text); text-decoration: none;">Vibe Coding Is Fun.
+                                Cleaning Up After It Is Not.</a></h3>
+                    </div>
+                    <p>Why relying entirely on AI-generated code leads to sneaky, subtle bugs—and how the best engineers
+                        are adapting to the era of 'vibe coding'.</p>
+                    <div class="proj-tags"><span>AI Tools</span><span>Code Quality</span></div>
+                </div>
+
+                <div class="proj-card">
+                    <div class="proj-header">
+                        <span class="proj-num">03</span>
+                        <h3><a href="https://faun.pub/the-day-my-perfect-prompt-almost-shipped-a-bug-b9f888b087fc"
+                                target="_blank" style="color: var(--text); text-decoration: none;">The Day My “Perfect
+                                Prompt” Almost Shipped a Bug</a></h3>
+                    </div>
+                    <p>Why prompt engineering is fading, and how real teams build resilient AI systems that catch
+                        mistakes early.</p>
+                    <div class="proj-tags"><span>AI/ML</span><span>Engineering Culture</span></div>
+                </div>
+
+                <div class="proj-card">
+                    <div class="proj-header">
+                        <span class="proj-num">04</span>
+                        <h3><a href="https://faun.pub/why-average-developers-are-slowly-disappearing-443251ccd253"
+                                target="_blank" style="color: var(--text); text-decoration: none;">Why “Average”
+                                Developers Are Slowly Disappearing</a></h3>
+                    </div>
+                    <p>An analysis of how AI and automation are changing the software engineering landscape and raising
+                        the bar for ownership.</p>
+                    <div class="proj-tags"><span>Career</span><span>Software Eng</span></div>
+                </div>
+
+            </div>
+
+            <div style="margin-top: 2rem; display: flex; justify-content: flex-start;">
+                <a href="https://medium.com/@thejeevan" target="_blank" class="btn-send" style="text-decoration: none;">
+                    <span class="dollar">./</span>read-more-on-medium <i class="fas fa-external-link-alt"
+                        style="margin-left: 8px;"></i>
+                </a>
+            </div>
+        </section>
+
+        <footer class="rp-footer">
+            <span class="dollar">$</span>
+            <span>echo "© 2026 Jeevan Jyoti Srivastava"</span>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
