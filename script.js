@@ -129,3 +129,136 @@ if (typewriterEl) {
 
 console.log('%c$ whoami', 'color:#3fb950;font-family:monospace;font-size:16px;font-weight:bold');
 console.log('%c  Jeevan Jyoti Srivastava — Engineering Leader & Architect', 'color:#58a6ff;font-family:monospace;font-size:12px');
+
+// ===== FETCH MEDIUM ARTICLES =====
+async function loadMediumArticles() {
+    const writingGrid = document.getElementById('writingGrid');
+    if (!writingGrid) return;
+
+    // Save static content as fallback
+    const originalContent = writingGrid.innerHTML;
+    
+    // Display animated skeletons matching terminal card style
+    writingGrid.innerHTML = `
+        <div class="proj-card skeleton-card">
+            <div class="skeleton-header"></div>
+            <div class="skeleton-text"></div>
+            <div class="skeleton-text short"></div>
+            <div class="skeleton-tags"></div>
+        </div>
+        <div class="proj-card skeleton-card">
+            <div class="skeleton-header"></div>
+            <div class="skeleton-text"></div>
+            <div class="skeleton-text short"></div>
+            <div class="skeleton-tags"></div>
+        </div>
+    `;
+
+    const feedUrl = 'https://medium.com/feed/@thejeevan';
+    const proxyUrlCodeTabs = `https://api.codetabs.com/v1/proxy/?quest=${feedUrl}`;
+    const proxyUrlAllOrigins = `https://api.allorigins.win/get?url=${encodeURIComponent(feedUrl)}`;
+
+    let xmlText = '';
+
+    // Fallback proxy fetch chain
+    try {
+        const response = await fetch(proxyUrlCodeTabs);
+        if (!response.ok) throw new Error('CodeTabs proxy returned error');
+        xmlText = await response.text();
+    } catch (e) {
+        console.warn('CodeTabs proxy failed, trying AllOrigins...', e);
+        try {
+            const response = await fetch(proxyUrlAllOrigins);
+            if (!response.ok) throw new Error('AllOrigins proxy returned error');
+            const data = await response.json();
+            xmlText = data.contents;
+        } catch (err) {
+            console.error('All CORS proxies failed. Falling back to static articles.', err);
+            writingGrid.innerHTML = originalContent;
+            return;
+        }
+    }
+
+    try {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+        
+        // Check for parser errors
+        const parseError = xmlDoc.getElementsByTagName('parsererror');
+        if (parseError.length > 0) throw new Error('XML parsing failed');
+
+        const items = xmlDoc.getElementsByTagName('item');
+        if (items.length === 0) throw new Error('Empty RSS items');
+
+        writingGrid.innerHTML = ''; // Clear skeletons
+
+        const maxArticles = Math.min(items.length, 4);
+        for (let i = 0; i < maxArticles; i++) {
+            const item = items[i];
+            
+            const title = item.getElementsByTagName('title')[0]?.textContent || 'Untitled Article';
+            const link = item.getElementsByTagName('link')[0]?.textContent || 'https://medium.com/@thejeevan';
+            
+            // Handle content extracting
+            let contentEncoded = item.getElementsByTagName('content:encoded')[0]?.textContent || '';
+            if (!contentEncoded) {
+                contentEncoded = item.getElementsByTagName('description')[0]?.textContent || '';
+            }
+
+            // Extract plain text snippet
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = contentEncoded;
+            tempDiv.querySelectorAll('figure, figcaption, img, pre, code').forEach(el => el.remove());
+            
+            let description = tempDiv.textContent || tempDiv.innerText || '';
+            description = description.replace(/\s+/g, ' ').trim();
+            if (description.length > 150) {
+                description = description.substring(0, 150) + '...';
+            } else if (!description) {
+                description = 'Read the full article on Medium.';
+            }
+
+            // Parse tags
+            const categoriesElements = item.getElementsByTagName('category');
+            const tags = [];
+            for (let j = 0; j < Math.min(categoriesElements.length, 3); j++) {
+                tags.push(categoriesElements[j].textContent);
+            }
+            if (tags.length === 0) tags.push('Medium', 'Writing');
+
+            const numStr = String(i + 1).padStart(2, '0');
+            const card = document.createElement('div');
+            card.className = 'proj-card reveal';
+            
+            const tagsHTML = tags.map(tag => `<span>${tag}</span>`).join('');
+
+            card.innerHTML = `
+                <div class="proj-header">
+                    <span class="proj-num">${numStr}</span>
+                    <h3><a href="${link}" target="_blank" style="color: var(--text); text-decoration: none;">${title}</a></h3>
+                </div>
+                <p>${description}</p>
+                <div class="proj-tags">${tagsHTML}</div>
+            `;
+
+            writingGrid.appendChild(card);
+            
+            // Add scroll animation observer
+            if (typeof revealObs !== 'undefined') {
+                revealObs.observe(card);
+            } else {
+                card.classList.add('visible');
+            }
+        }
+    } catch (parseErr) {
+        console.error('Failed to parse Medium RSS feed. Using static fallback.', parseErr);
+        writingGrid.innerHTML = originalContent;
+    }
+}
+
+// Initialize fetch
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadMediumArticles);
+} else {
+    loadMediumArticles();
+}

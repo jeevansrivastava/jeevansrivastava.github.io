@@ -4,7 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary SEO Metadata -->
     <title>Jeevan Jyoti Srivastava | Engineering Leader & Architect</title>
+    <meta name="description"
+        content="Portfolio of Jeevan Jyoti Srivastava, an Engineering Leader and System Architect specializing in scalable backend systems, cloud infrastructure, performance optimization, and AI voice agents.">
+    <meta name="keywords"
+        content="Jeevan Jyoti Srivastava, Engineering Leader, System Architect, Backend Developer, Cloud Infrastructure, Redis Cluster, AWS Cost Optimization, Node.js performance, AI Voice Agent">
+    <meta name="author" content="Jeevan Jyoti Srivastava">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://jeevansrivastava.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jeevansrivastava.com/">
+    <meta property="og:title" content="Jeevan Jyoti Srivastava | Engineering Leader & Architect">
+    <meta property="og:description"
+        content="I build and scale high-performing engineering teams, focusing on robust backend platforms, cloud infrastructure, and AI systems.">
+    <meta property="og:image" content="https://jeevansrivastava.com/assets/og-image.png">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://jeevansrivastava.com/">
+    <meta name="twitter:title" content="Jeevan Jyoti Srivastava | Engineering Leader & Architect">
+    <meta name="twitter:description"
+        content="I build and scale high-performing engineering teams, focusing on robust backend platforms, cloud infrastructure, and AI systems.">
+    <meta name="twitter:image" content="https://jeevansrivastava.com/assets/og-image.png">
+    <meta name="twitter:site" content="@thejeevan">
+
+    <!-- Google Analytics (GA4) -->
+    <!-- REPLACE 'G-XXXXXXXXXX' WITH YOUR ACTUAL MEASUREMENT ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-13F34CY3BV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-13F34CY3BV');
+    </script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jeevan Jyoti Srivastava",
+      "jobTitle": "Engineering Leader & Architect",
+      "url": "https://jeevansrivastava.com/",
+      "sameAs": [
+        "https://github.com/jeevanjsrivastava",
+        "https://www.linkedin.com/in/jeevanjsrivastava",
+        "https://x.com/thejeevan",
+        "https://medium.com/@thejeevan"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Uolo.com",
+        "url": "https://uolo.com"
+      },
+      "description": "I build and scale high-performing engineering teams, focusing on robust backend platforms, cloud infrastructure, and AI systems."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Jeevan Jyoti Srivastava"
+      }
+    }
+    </script>
+
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -51,7 +121,8 @@
 
     <!-- Mobile Header -->
     <header class="mobile-header">
-        <a href="#about" class="mobile-name">JJS</a>
+        <a href="#about" class="mobile-name"><span class="mobile-logo-prompt">$ </span>jeevan<span
+                class="accent">.</span>js<span class="mobile-logo-cursor">_</span></a>
         <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
             <span></span><span></span><span></span>
         </button>
@@ -70,9 +141,12 @@
             <p class="boot-line" style="opacity: 0; transition: opacity 0.2s ease;">Last login:
                 <script>document.write(new Date().toDateString())</script> on ttys001
             </p>
-            <p class="boot-line" style="opacity: 0; transition: opacity 0.2s ease;">jeevan@mbp ~ % ./start_portfolio.sh</p>
-            <p class="boot-line" style="opacity: 0; transition: opacity 0.2s ease; color: var(--green);">[OK] Loading modules...</p>
-            <p class="boot-line" style="opacity: 0; transition: opacity 0.2s ease; color: var(--green);">[OK] Initializing session...</p>
+            <p class="boot-line" style="opacity: 0; transition: opacity 0.2s ease;">jeevan@mbp ~ % ./start_portfolio.sh
+            </p>
+            <p class="boot-line" style="opacity: 0; transition: opacity 0.2s ease; color: var(--green);">[OK] Loading
+                modules...</p>
+            <p class="boot-line" style="opacity: 0; transition: opacity 0.2s ease; color: var(--green);">[OK]
+                Initializing session...</p>
         </div>
 
         <!-- ABOUT -->
@@ -182,7 +256,7 @@
         <section id="writing" class="rp-section">
             <h2 class="section-label"><span class="dollar">$</span> ls ./writing/</h2>
 
-            <div class="proj-grid">
+            <div class="proj-grid" id="writingGrid">
 
                 <div class="proj-card">
                     <div class="proj-header">
