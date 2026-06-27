@@ -155,40 +155,17 @@ async function loadMediumArticles() {
     `;
 
     const feedUrl = 'https://medium.com/feed/@thejeevan';
-    const proxyUrlCodeTabs = `https://api.codetabs.com/v1/proxy/?quest=${feedUrl}`;
-    const proxyUrlAllOrigins = `https://api.allorigins.win/get?url=${encodeURIComponent(feedUrl)}`;
-
-    let xmlText = '';
-
-    // Fallback proxy fetch chain
-    try {
-        const response = await fetch(proxyUrlCodeTabs);
-        if (!response.ok) throw new Error('CodeTabs proxy returned error');
-        xmlText = await response.text();
-    } catch (e) {
-        console.warn('CodeTabs proxy failed, trying AllOrigins...', e);
-        try {
-            const response = await fetch(proxyUrlAllOrigins);
-            if (!response.ok) throw new Error('AllOrigins proxy returned error');
-            const data = await response.json();
-            xmlText = data.contents;
-        } catch (err) {
-            console.error('All CORS proxies failed. Falling back to static articles.', err);
-            writingGrid.innerHTML = originalContent;
-            return;
-        }
-    }
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${feedUrl}`;
 
     try {
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error('rss2json API returned error');
+        const data = await response.json();
         
-        // Check for parser errors
-        const parseError = xmlDoc.getElementsByTagName('parsererror');
-        if (parseError.length > 0) throw new Error('XML parsing failed');
-
-        const items = xmlDoc.getElementsByTagName('item');
-        if (items.length === 0) throw new Error('Empty RSS items');
+        if (data.status !== 'ok') throw new Error('API returned non-ok status');
+        
+        const items = data.items;
+        if (!items || items.length === 0) throw new Error('Empty RSS items');
 
         writingGrid.innerHTML = ''; // Clear skeletons
 
@@ -196,14 +173,11 @@ async function loadMediumArticles() {
         for (let i = 0; i < maxArticles; i++) {
             const item = items[i];
             
-            const title = item.getElementsByTagName('title')[0]?.textContent || 'Untitled Article';
-            const link = item.getElementsByTagName('link')[0]?.textContent || 'https://medium.com/@thejeevan';
+            const title = item.title || 'Untitled Article';
+            const link = item.link || 'https://medium.com/@thejeevan';
             
             // Handle content extracting
-            let contentEncoded = item.getElementsByTagName('content:encoded')[0]?.textContent || '';
-            if (!contentEncoded) {
-                contentEncoded = item.getElementsByTagName('description')[0]?.textContent || '';
-            }
+            let contentEncoded = item.content || item.description || '';
 
             // Extract plain text snippet
             const tempDiv = document.createElement('div');
@@ -219,10 +193,10 @@ async function loadMediumArticles() {
             }
 
             // Parse tags
-            const categoriesElements = item.getElementsByTagName('category');
+            const categoriesElements = item.categories || [];
             const tags = [];
             for (let j = 0; j < Math.min(categoriesElements.length, 3); j++) {
-                tags.push(categoriesElements[j].textContent);
+                tags.push(categoriesElements[j]);
             }
             if (tags.length === 0) tags.push('Medium', 'Writing');
 
