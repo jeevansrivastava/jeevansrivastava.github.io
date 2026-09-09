@@ -3,9 +3,9 @@ import { ProjectCard } from "@/components/ui/ProjectCard";
 
 const caseStudies = [
   {
-    title: "AI Voice Application",
-    description: "Real-time voice agent platform with <200ms latency, multi-agent orchestration, and adaptive bilingual interactions.",
-    tags: ["LiveKit", "OpenAI", "Cartesia", "PostgreSQL", "Node.js"],
+    title: "AI Voice Application (AI Didi)",
+    description: "Real-time bilingual voice tutor platform with <200ms TTFB, 6-agent orchestration, DTLN noise filtering, and multimodal WebRTC sync.",
+    tags: ["LiveKit WebRTC", "Cartesia", "Silero VAD", "DTLN", "Langfuse", "PostgreSQL"],
     slug: "ai-voice-application",
   },
   {

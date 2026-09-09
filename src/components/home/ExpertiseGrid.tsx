@@ -4,8 +4,8 @@ import { ProjectCard } from "@/components/ui/ProjectCard";
 const expertiseData = [
   {
     title: "AI Infrastructure",
-    description: "Voice AI, LLM Integrations, RAG Pipelines, Multi-Agent Systems, Real-time Streaming",
-    tags: ["LiveKit", "OpenAI", "Cartesia", "Silero VAD", "RAG"],
+    description: "Voice AI, LLM Streaming Pipelines, Multi-Agent State Machines, Acoustic DSP, Observability",
+    tags: ["LiveKit WebRTC", "Cartesia", "Silero VAD", "DTLN", "Langfuse", "OpenAI"],
   },
   {
     title: "Backend Systems",

@@ -7,49 +7,59 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "AI Voice Application | Case Study",
-  description: "Real-time voice application platform with <200ms latency, multi-agent orchestration, and adaptive bilingual interactions.",
+  description: "Real-time bilingual voice tutor platform with <200ms TTFB, 6-agent orchestration, DTLN noise filtering, and multimodal WebRTC sync.",
 };
 
 const diagram = `
-  User ←──────── WebRTC/LiveKit ─────→ LiveKit Room
-  (Mobile)                              │
-                                   Voice Agent Pipeline
-                                        │
-                          Audio In ──→ Silero VAD ──→ Cartesia STT
-                                                          │
-                                                    ┌─────↓──────┐
-                                                    │Orchestrator│
-                                                    │   Agent    │
-                                                    └─────┬──────┘
-                                          ┌───────────────┼───────────────┐
-                                    ┌─────↓─────┐   ┌─────↓─────┐   ┌─────↓─────┐
-                                    │  ChitChat │   │    SME    │   │  Gaming   │
-                                    │   Agent   │   │   Agent   │   │  Agent    │
-                                    └───────────┘   └─────┬─────┘   └───────────┘
-                                                          │
-                                                    ┌─────↓─────┐
-                                                    │Assessment │
-                                                    │   Agent   │
-                                                    └───────────┘
-                                                          │
-                                    Cartesia TTS ←── LLM Response
-                                         │
-                                    Audio Out ──────────────→ User
-
-                                    ┌────────────┐    ┌───────────┐
-                                    │ PostgreSQL │    │RAG Engine │
-                                    │ (Drizzle)  │    │(Embeddings│
-                                    │ Users/State│    │ + Search) │
-                                    └────────────┘    └───────────┘
+  User (Mobile / Web) ←──────── WebRTC (LiveKit) ────────→ LiveKit Room
+                                                                │
+  ┌─────────────────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────┐
+  │                                           Real-Time Voice & Multimodal Pipeline                                           │
+  │                                                                                                                           │
+  │  Audio In ──→ [ DTLN Noise Filter ] ──→ [ Silero VAD (1.5s) ] ──→ [ Cartesia / Deepgram STT ]                             │
+  │                                                                                  │                                        │
+  │                                                                           ┌──────↓──────┐                                 │
+  │                                                                           │Orchestrator │                                 │
+  │                                                                           │ Router/State│                                 │
+  │                                                                           └──────┬──────┘                                 │
+  │                               ┌───────────────────────┬───────────────────┼───────────────────┬──────────────────────┐    │
+  │                         ┌─────↓─────┐           ┌─────↓─────┐       ┌─────↓─────┐       ┌─────↓─────┐          ┌─────↓──┐ │
+  │                         │  ChitChat │           │    SME    │       │ Assessment│       │   Gaming  │          │ Doubt  │ │
+  │                         │   Agent   │           │ (Lessons) │       │ (Adaptive)│       │  (Trivia) │          │Clearing│ │
+  │                         └───────────┘           └─────┬─────┘       └─────┬─────┘       └───────────┘          └────────┘ │
+  │                                                       │                   │                                               │
+  │                                                       └─────────┬─────────┘                                               │
+  │                                                                 ↓                                                         │
+  │                                                   LLM Token Stream (SSE)                                                  │
+  │                                                                 │                                                         │
+  │                                                   [ Semantic Sentence Chunker ]                                           │
+  │                                                                 │                                                         │
+  │                                                   [ Session FIFO Emit Queue ]                                             │
+  │                                                                 │                                                         │
+  │                                       ┌─────────────────────────┴────────────────────────┐                                │
+  │                                       ↓                                                  ↓                                │
+  │                             Cartesia TTS (Streaming)                           Piper TTS (Local ONNX)                     │
+  │                                       │                                                  │                                │
+  │                                       └─────────────────────────┬────────────────────────┘                                │
+  │                                                                 │                                                         │
+  │  Audio Out + UI Data Packets (Quiz / Video / Progress) ─────────┴───────────────────────────────────────────────────────→ │
+  └─────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────┘
+                                                                │
+  ┌───────────────────────────────────┬─────────────────────────┴─────────────────────────┬──────────────────────────────────┐
+  │          Observability            │                   Persistence                     │          Integrations            │
+  │  • Langfuse (Token & LLM Traces)  │  • PostgreSQL + Drizzle ORM (60s Flush)           │  • WhatsApp Parent Reports Bot   │
+  │  • OpenTelemetry (Hop Latencies)  │  • Redis (Session Cache & Handoff Context)        │  • Subscription & Paywall Engine │
+  └───────────────────────────────────┴───────────────────────────────────────────────────┴──────────────────────────────────┘
 `;
 
 const decisions = [
-  { decision: "Voice Transport", choice: "LiveKit WebRTC", alternative: "Socket.IO", reason: "Sub-200ms latency, native VAD, built-in rooms" },
-  { decision: "TTS Provider", choice: "Cartesia (sonic-3.5)", alternative: "Google TTS", reason: "Natural voice quality, Hindi support, streaming" },
-  { decision: "VAD Model", choice: "Silero ONNX (1500ms)", alternative: "WebRTC VAD", reason: "Child speech accuracy, configurable silence threshold" },
-  { decision: "Multi-Agent", choice: "llm.handoff()", alternative: "Hard-coded routing", reason: "Dynamic agent transitions, clean separation" },
-  { decision: "DB ORM", choice: "Drizzle ORM", alternative: "Prisma", reason: "Type-safe, SQL-like, lightweight" },
-  { decision: "Session Flush", choice: "60s periodic", alternative: "Write-through", reason: "60x fewer DB writes, crash-safe state" },
+  { decision: "Voice Transport", choice: "LiveKit WebRTC", alternative: "WebSockets / Socket.IO", reason: "Sub-200ms latency, unified audio/video rooms, and native data channels for UI sync" },
+  { decision: "Streaming Pipeline", choice: "Semantic Chunker + FIFO Queue", alternative: "Buffer-until-complete TTS", reason: "Sub-200ms TTFB while preventing race conditions and out-of-order audio chunks" },
+  { decision: "Noise & VAD", choice: "DTLN ONNX + Silero VAD (1.5s)", alternative: "Basic browser VAD", reason: "Suppresses ambient household noise; customized 1500ms silence threshold tuned for kids" },
+  { decision: "TTS Engine", choice: "Cartesia (sonic-3.5) + Piper ONNX", alternative: "Cloud-only Google TTS", reason: "Ultra-low latency streaming with local Piper ONNX fallback for high-frequency phrases" },
+  { decision: "Multi-Agent System", choice: "LiveKit llm.handoff() + Zod", alternative: "Monolithic single prompt", reason: "Zero-drift domain boundaries, runtime schema validation, and specialized system prompts" },
+  { decision: "Observability", choice: "Langfuse + OpenTelemetry", alternative: "Raw server logs", reason: "Per-hop latency tracing (VAD/STT/LLM/TTS), cost attribution, and full conversation replay" },
+  { decision: "Session Persistence", choice: "60s Periodic DB Flush", alternative: "Synchronous write-through", reason: "Eliminated 60x database write overhead while guaranteeing crash-resilient restoration" },
 ];
 
 export default function CaseStudy() {
@@ -57,19 +67,19 @@ export default function CaseStudy() {
     <article className="max-w-[800px] mb-24">
       <SectionLabel command="cat ./meta.json" />
       <CaseStudyHero 
-        title="AI Voice Application"
-        role="Lead Engineer & Architect"
-        stack={["LiveKit", "OpenAI", "Cartesia", "Silero VAD", "PostgreSQL", "Drizzle", "TypeScript"]}
+        title="AI Voice Application (AI Didi)"
+        role="Lead Engineer & Systems Architect"
+        stack={["LiveKit WebRTC", "Cartesia", "OpenAI", "Silero VAD", "DTLN", "Langfuse", "PostgreSQL", "Drizzle", "TypeScript"]}
         duration="2025 — Present"
       />
 
       <SectionLabel command="cat ./problem.md" />
       <div className="text-muted leading-relaxed mb-12 text-[0.95rem]">
         <p className="mb-4">
-          Traditional text-based chat platforms fail to engage demographics in emerging markets, where spoken language (Hindi/Hinglish) is the most natural interface.
+          Traditional text-based tutoring fails to engage younger students in emerging markets where conversational Hindi, English, and Hinglish are the most natural mediums of instruction. 
         </p>
         <p>
-          We needed a platform that could deliver highly personalized, voice-first AI interactions at scale — with the ability to route between specialized AI agents, trigger dynamic workflows, and adapt to each user&apos;s interaction pace.
+          We engineered an autonomous, real-time voice tutoring platform (&quot;AI Didi&quot;) capable of sub-200ms bilingual conversational latency, dynamic multi-agent instruction routing (curriculum lessons, adaptive quizzes, games, and doubt clearing), and synchronized multimodal UI updates across mobile networks.
         </p>
       </div>
 
@@ -83,34 +93,39 @@ export default function CaseStudy() {
       <div className="mb-12">
         <ChallengeBlock 
           num="01"
-          title="Audio Interruption Handling"
-          description="When users interrupt during media playback, the agent must gracefully pause audio, answer the question, and offer to resume — all while maintaining workflow state. Solved via a waitForMediaPlayback() promise pattern combined with room-level data channels."
+          title="Streaming Audio Ordering & Sub-200ms TTFB"
+          description="Streaming LLM tokens directly to TTS can result in race conditions where subsequent sentences finish synthesizing before prior ones. Implemented a semantic sentence chunker with boundary heuristics paired with a monotonic session FIFO emit queue, guaranteeing strict in-order playback while keeping TTFB under 200ms."
         />
         <ChallengeBlock 
           num="02"
-          title="Multi-Agent State Machine"
-          description="5 distinct agents (Orchestrator, ChitChat, SME, Assessment, Gaming) required complex handoff patterns. Utilized LiveKit's native llm.handoff() for clean transitions, with AgentContext propagated safely across boundaries."
+          title="Acoustic Signal Processing in Noisy Environments"
+          description="Children often speak with irregular pauses in noisy home environments. We deployed an in-memory DTLN (Dual-Signal Transformation LSTM Network) noise filter via ONNX Runtime and configured Silero VAD with a 1500ms silence threshold to prevent premature interruptions."
         />
         <ChallengeBlock 
           num="03"
-          title="Adaptive Language"
-          description="Required Hinglish/Hindi/English real-time language detection and switching. Implemented via system-prompt-level language style injection with dynamic adaptive language rules per user preference."
+          title="6-Agent State Machine & Zero-Drift Handoffs"
+          description="Designed 6 specialized agents (Orchestrator, SME, ChitChat, Assessment, DoubtClearing, Gaming). Transitions use LiveKit's native handoffs validated at runtime with Zod schemas, preserving cumulative student mastery and conversation context seamlessly across agent boundaries."
         />
         <ChallengeBlock 
           num="04"
-          title="Resumable Sessions"
-          description="Users often disconnect mid-session on mobile networks. Implemented persistent agentState and playback progress tracking with periodic background flushes to PostgreSQL, enabling seamless restoration on reconnect."
+          title="Multimodal Sync & Graceful Media Interruptions"
+          description="Voice prompts must stay in tight sync with video chapters, interactive quiz overlays, and suggestion chips. Handled via WebRTC data channels and a custom waitForMediaPlayback() promise coordinator that gracefully pauses media, processes user questions, and resumes uninterrupted."
+        />
+        <ChallengeBlock 
+          num="05"
+          title="Full-Pipeline Observability & Parent Reporting"
+          description="Integrated Langfuse and OpenTelemetry to profile granular per-hop latencies (VAD, ASR, LLM chunking, TTS) and monitor token burn. Coupled this with a WhatsApp microservice that dispatches automated post-session student mastery report cards to parents."
         />
       </div>
 
       <SectionLabel command="cat ./outcome.md" />
       <div className="bg-[rgba(166,227,161,0.05)] border border-[rgba(166,227,161,0.2)] rounded-[6px] p-6 text-text">
         <ul className="list-disc pl-5 m-0 flex flex-col gap-2 text-[0.95rem]">
-          <li>Real-time voice interaction achieved with <span className="text-green font-mono">{"<200ms"}</span> response latency.</li>
-          <li>Successful multi-turn clarification loops (Orchestrator → clarify → route → SME).</li>
-          <li>Resumable sessions across mobile network disconnects.</li>
-          <li>Workflow-aware RAG-powered data delivery.</li>
-          <li>Bilingual (Hindi/English/Hinglish) adaptive responses serving a wider demographic.</li>
+          <li>Achieved sub-<span className="text-green font-mono">200ms</span> end-to-end voice response latency over real-world mobile 4G networks.</li>
+          <li>Zero out-of-order audio glitches via semantic chunking and monotonic FIFO queue synchronization.</li>
+          <li>Resilient session continuity across mobile disconnects with 60x reduction in database write load.</li>
+          <li>Comprehensive Langfuse LLM tracing tracking latency bottlenecks and token cost optimization.</li>
+          <li>Automated parent loop closing with instant post-session learning summaries over WhatsApp.</li>
         </ul>
       </div>
     </article>

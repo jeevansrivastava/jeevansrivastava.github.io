@@ -22,7 +22,7 @@ export default function AboutPage() {
             <strong className="text-accent">What I bring to the table:</strong> I specialize in taking systems from fragile to bulletproof. My career is defined by measurable impact—whether that's dropping critical API response times from 19 seconds to sub-500ms, recovering 25% in monthly cloud spend by profiling AWS infrastructure, or designing highly-available video pipelines for millions of concurrent users.
           </p>
           <p>
-            <strong className="text-accent">My current frontier is AI Infrastructure.</strong> I don't just build wrappers; I engineer complex, sub-200ms real-time voice platforms and multi-agent orchestration systems using LiveKit, Cartesia, and specialized RAG pipelines. 
+            <strong className="text-accent">My current frontier is AI Infrastructure & Real-Time Systems.</strong> I don't just build API wrappers; I engineer complex, sub-200ms real-time voice pipelines, acoustic signal processing (DTLN noise filters, tuned Silero VAD), autonomous multi-agent state machines, and end-to-end LLM observability using LiveKit WebRTC, Cartesia, Langfuse, and OpenTelemetry.
           </p>
           <p>
             I lead from the front, measure everything, and treat infrastructure as code. I build small, high-leverage engineering teams that ship fast and solve the hardest technical problems from first principles.

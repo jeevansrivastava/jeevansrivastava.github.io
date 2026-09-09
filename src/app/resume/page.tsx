@@ -13,10 +13,12 @@ const timeline = [
     company: "UOLO Edtech Private Limited",
     date: "04/2022 - Present",
     details: [
-      "Architected and deployed a real-time AI Voice Application using LiveKit WebRTC, Cartesia, and OpenAI, achieving sub-200ms latency.",
-      "Led the performance engineering task force, reducing critical API response times from ~19s down to <500ms and reducing AWS cloud spend by 25%.",
-      "Designed a multi-agent LLM orchestration system with native handoffs for dynamic, bilingual conversational flows.",
-      "Led a 7-member engineering team, driving technical strategy and delivering 15+ core architectural projects ahead of schedule."
+      "Architected and deployed an end-to-end real-time AI Voice Tutor ('AI Didi') using LiveKit WebRTC, Cartesia, OpenAI, and custom ONNX signal processing (DTLN noise reduction, Silero VAD), achieving sub-200ms TTFB.",
+      "Engineered a low-latency streaming pipeline combining LLM token streaming, semantic sentence chunking, and session-scoped FIFO queues to eliminate out-of-order audio synthesis.",
+      "Designed a 6-agent autonomous state machine (Orchestrator, SME, ChitChat, Assessment, DoubtClearing, Gaming) with zero-drift LLM handoffs and crash-resilient session restoration.",
+      "Integrated full-pipeline LLM observability via Langfuse and OpenTelemetry for per-turn latency profiling, token burn attribution, and conversation tracing.",
+      "Led the performance engineering task force, reducing critical API response times from ~19s down to <500ms and cutting AWS cloud infrastructure spend by 25%.",
+      "Mentored and led a high-velocity engineering team, shipping core architectural initiatives and microservices ahead of schedule."
     ]
   },
   {
