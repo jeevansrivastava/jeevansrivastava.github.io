@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "AI Voice Application | Case Study",
-  description: "Real-time bilingual voice tutor platform with <200ms TTFB, 6-agent orchestration, DTLN noise filtering, and multimodal WebRTC sync.",
+  description: "How a real-time bilingual AI tutoring product was architected for dependable learner interaction, explicit state, and operational clarity.",
 };
 
 const diagram = `
@@ -67,65 +67,71 @@ export default function CaseStudy() {
     <article className="max-w-[800px] mb-24">
       <SectionLabel command="cat ./meta.json" />
       <CaseStudyHero 
-        title="AI Voice Application (AI Didi)"
-        role="Lead Engineer & Systems Architect"
+        title="Making Real-Time AI Tutoring Dependable Beyond the Demo"
+        role="AI Systems Architect & Lead Engineer"
         stack={["LiveKit WebRTC", "Cartesia", "OpenAI", "Silero VAD", "DTLN", "Langfuse", "PostgreSQL", "Drizzle", "TypeScript"]}
         duration="2025 — Present"
       />
 
-      <SectionLabel command="cat ./problem.md" />
+      <SectionLabel command="cat ./mandate.md" />
       <div className="text-muted leading-relaxed mb-12 text-[0.95rem]">
         <p className="mb-4">
-          Traditional text-based tutoring fails to engage younger students in emerging markets where conversational Hindi, English, and Hinglish are the most natural mediums of instruction. 
+          Younger learners naturally speak Hindi, English, and Hinglish. For them, a voice tutor must work through noisy homes, variable devices, unreliable networks, and interruptions—not only in a controlled product demo.
         </p>
         <p>
-          We engineered an autonomous, real-time voice tutoring platform (&quot;AI Didi&quot;) capable of sub-200ms bilingual conversational latency, dynamic multi-agent instruction routing (curriculum lessons, adaptive quizzes, games, and doubt clearing), and synchronized multimodal UI updates across mobile networks.
+          My mandate was to create a learning experience that could hold its pedagogical flow under those conditions while giving product and engineering teams a system they could investigate and improve.
         </p>
       </div>
 
-      <SectionLabel command="cat ./architecture.md" />
+      <SectionLabel command="cat ./architectural-position.md" />
+      <div className="text-muted leading-relaxed mb-12 text-[0.95rem]">
+        <p>
+          I did not treat this as a chatbot with speech. I established a deterministic learning journey beneath the AI interactions: explicit learner state, bounded capabilities, measurable voice latency, and safe recovery when media or connectivity fails. This kept the experience coherent for learners and made the platform operable by more than the person who built it.
+        </p>
+      </div>
+
+      <SectionLabel command="cat ./operating-model.md" />
       <ArchDiagram content={diagram} />
 
       <SectionLabel command="diff --decisions" />
       <DecisionTable decisions={decisions} />
 
-      <SectionLabel command="cat ./challenges.md" />
+      <SectionLabel command="cat ./decisions-in-practice.md" />
       <div className="mb-12">
         <ChallengeBlock 
           num="01"
-          title="Streaming Audio Ordering & Sub-200ms TTFB"
-          description="Streaming LLM tokens directly to TTS can result in race conditions where subsequent sentences finish synthesizing before prior ones. Implemented a semantic sentence chunker with boundary heuristics paired with a monotonic session FIFO emit queue, guaranteeing strict in-order playback while keeping TTFB under 200ms."
+          title="Protecting the conversational turn"
+          description="I made fast first audio and ordered playback an explicit product contract. The streaming design preserved natural turn-taking rather than trading learner trust for raw generation speed."
         />
         <ChallengeBlock 
           num="02"
-          title="Acoustic Signal Processing in Noisy Environments"
-          description="Children often speak with irregular pauses in noisy home environments. We deployed an in-memory DTLN (Dual-Signal Transformation LSTM Network) noise filter via ONNX Runtime and configured Silero VAD with a 1500ms silence threshold to prevent premature interruptions."
+          title="Designing for real households, not ideal microphones"
+          description="Noise handling and interruption timing were tuned around how children actually speak. That reduced premature cut-offs and made the interaction usable outside a quiet test environment."
         />
         <ChallengeBlock 
           num="03"
-          title="6-Agent State Machine & Zero-Drift Handoffs"
-          description="Designed 6 specialized agents (Orchestrator, SME, ChitChat, Assessment, DoubtClearing, Gaming). Transitions use LiveKit's native handoffs validated at runtime with Zod schemas, preserving cumulative student mastery and conversation context seamlessly across agent boundaries."
+          title="Keeping AI inside a learning journey"
+          description="I separated learner progression, assessment, doubt clearing, and conversation into bounded responsibilities. The product could adapt without allowing an open-ended model to derail a planned lesson."
         />
         <ChallengeBlock 
           num="04"
-          title="Multimodal Sync & Graceful Media Interruptions"
-          description="Voice prompts must stay in tight sync with video chapters, interactive quiz overlays, and suggestion chips. Handled via WebRTC data channels and a custom waitForMediaPlayback() promise coordinator that gracefully pauses media, processes user questions, and resumes uninterrupted."
+          title="Making multimodal interruptions recoverable"
+          description="Voice, video, quizzes, and on-screen guidance needed to remain coherent when a learner asked a question mid-flow. I defined recovery behavior so the system paused, responded, and resumed without losing context."
         />
         <ChallengeBlock 
           num="05"
-          title="Full-Pipeline Observability & Parent Reporting"
-          description="Integrated Langfuse and OpenTelemetry to profile granular per-hop latencies (VAD, ASR, LLM chunking, TTS) and monitor token burn. Coupled this with a WhatsApp microservice that dispatches automated post-session student mastery report cards to parents."
+          title="Giving teams evidence, not anecdotes"
+          description="The operating model traces each critical voice hop, AI decision, cost driver, and learner outcome. This gave the team a path to investigate sessions and communicate progress to parents."
         />
       </div>
 
-      <SectionLabel command="cat ./outcome.md" />
+      <SectionLabel command="cat ./capability-created.md" />
       <div className="bg-[rgba(166,227,161,0.05)] border border-[rgba(166,227,161,0.2)] rounded-[6px] p-6 text-text">
         <ul className="list-disc pl-5 m-0 flex flex-col gap-2 text-[0.95rem]">
-          <li>Achieved sub-<span className="text-green font-mono">200ms</span> end-to-end voice response latency over real-world mobile 4G networks.</li>
-          <li>Zero out-of-order audio glitches via semantic chunking and monotonic FIFO queue synchronization.</li>
-          <li>Resilient session continuity across mobile disconnects with 60x reduction in database write load.</li>
-          <li>Comprehensive Langfuse LLM tracing tracking latency bottlenecks and token cost optimization.</li>
-          <li>Automated parent loop closing with instant post-session learning summaries over WhatsApp.</li>
+          <li>Designed for fast, ordered voice responses, with first audio under <span className="text-green font-mono">200ms</span> after turn finalization in the measured pipeline.</li>
+          <li>Created a deterministic learning flow that can pause, adapt, and resume without losing learner context.</li>
+          <li>Reduced session-persistence write load by <span className="text-green font-mono">60×</span> while retaining recovery capability.</li>
+          <li>Established an operating evidence layer for latency, cost, conversation investigation, and parent-facing learner summaries.</li>
         </ul>
       </div>
     </article>

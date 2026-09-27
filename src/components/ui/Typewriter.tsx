@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 
 const words = [
-  "architecting resilient backend systems",
-  "scaling real-time AI infrastructure",
-  "optimizing distributed databases",
+  "architecting dependable AI systems",
+  "designing real-time learning platforms",
+  "making complex systems observable",
 ];
 
 export function Typewriter() {

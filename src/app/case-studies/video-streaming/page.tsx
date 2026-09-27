@@ -5,8 +5,8 @@ import { DecisionTable } from "@/components/case-study/DecisionTable";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Video Streaming & HLS Pipeline | Case Study",
-  description: "Built a reliable MP4 to HLS pipeline for scaleable video content delivery with multi-resolution adaptive bitrate streaming and S3 integration.",
+  title: "Learning Delivery Under Unreliable Connectivity | Case Study",
+  description: "How educational video delivery was designed for variable bandwidth, older devices, and the operational reality of publishing content at scale.",
 };
 
 const diagram = `
@@ -46,35 +46,35 @@ export default function CaseStudy() {
     <article className="max-w-[800px] mb-24">
       <SectionLabel command="cat ./meta.json" />
       <CaseStudyHero 
-        title="Video Streaming & HLS Pipeline"
-        role="Backend Engineer"
+        title="Designing Learning Delivery for Unreliable Connectivity"
+        role="Platform & Media Delivery Architect"
         stack={["Node.js", "FFmpeg", "AWS S3", "Express", "HLS", "Video.js"]}
         duration="2025"
       />
 
-      <SectionLabel command="cat ./problem.md" />
+      <SectionLabel command="cat ./mandate.md" />
       <div className="text-muted leading-relaxed mb-12 text-[0.95rem]">
         <p className="mb-4">
-          Delivering rich media content at scale required a robust streaming solution capable of handling massive concurrent playback across highly variable and often degraded network conditions.
+          Rich learning media has limited value when learners cannot start it reliably or when it fails on the devices they already own. The challenge was not simply to transcode video; it was to make learning delivery resilient across inconsistent bandwidth and device capability.
         </p>
         <p>
-          Serving raw MP4s was unscalable and resulted in massive buffering. We needed an automated pipeline to ingest raw uploads, transcode them into adaptive bitrate streams, and distribute them efficiently via CDN.
+          I established an operating path from upload to publish that balanced learner access, publishing speed, delivery cost, and long-term supportability for the content and platform teams.
         </p>
       </div>
 
-      <SectionLabel command="cat ./architecture.md" />
+      <SectionLabel command="cat ./delivery-operating-model.md" />
       <ArchDiagram content={diagram} />
 
       <SectionLabel command="diff --decisions" />
       <DecisionTable decisions={decisions} />
 
-      <SectionLabel command="cat ./outcome.md" />
+      <SectionLabel command="cat ./capability-created.md" />
       <div className="bg-[rgba(166,227,161,0.05)] border border-[rgba(166,227,161,0.2)] rounded-[6px] p-6 text-text">
         <ul className="list-disc pl-5 m-0 flex flex-col gap-2 text-[0.95rem]">
-          <li>Reliable video delivery achieved at scale across highly variable network conditions.</li>
-          <li>Automated Node.js/FFmpeg ingestion pipeline eliminated manual media processing.</li>
-          <li>Adaptive Bitrate Streaming (ABR) eliminated buffering for low-bandwidth users while preserving 720p HD for fast connections.</li>
-          <li>Zero-maintenance S3 storage integration with automated ephemeral cleanup prevents backend disk bloat.</li>
+          <li>Created a delivery model that prioritizes learner access across variable bandwidth and device conditions.</li>
+          <li>Established an automated upload-to-publish path, removing manual media processing from the content workflow.</li>
+          <li>Made adaptive delivery a product-access decision: lower-bandwidth learners receive a viable stream while faster connections retain higher quality.</li>
+          <li>Separated durable media storage from transient processing so the platform can scale without accumulating local operational debt.</li>
         </ul>
       </div>
     </article>

@@ -3,26 +3,26 @@ import { ProjectCard } from "@/components/ui/ProjectCard";
 
 const caseStudies = [
   {
-    title: "AI Voice Application (AI Didi)",
-    description: "Real-time bilingual voice tutor platform with <200ms TTFB, 6-agent orchestration, DTLN noise filtering, and multimodal WebRTC sync.",
+    title: "Making real-time AI tutoring dependable beyond the demo",
+    description: "Established the product, state, and operating boundaries for bilingual tutoring across noisy homes, variable networks, and interrupted sessions.",
     tags: ["LiveKit WebRTC", "Cartesia", "Silero VAD", "DTLN", "Langfuse", "PostgreSQL"],
     slug: "ai-voice-application",
   },
   {
-    title: "Backend Performance & AWS Cost Intelligence",
-    description: "Resolved critical API bottlenecks (19s → <500ms), eliminated O(N) Redis blocking calls, and reduced cloud spend by 25%.",
+    title: "Recovering a critical platform from peak-hour failure",
+    description: "Turned repeated production incidents into an evidence-led performance and capacity model, reducing response time from ~19s to <500ms.",
     tags: ["Node.js", "Redis", "MongoDB", "AWS CloudWatch"],
     slug: "aws-cost-intelligence",
   },
   {
-    title: "Video Streaming & HLS Pipeline",
-    description: "Built a reliable MP4 to HLS pipeline for classroom video content with multi-resolution adaptive bitrate streaming and S3 integration.",
+    title: "Designing learning delivery for unreliable connectivity",
+    description: "Made educational video delivery usable across variable bandwidth, older devices, and the operational realities of content publishing.",
     tags: ["FFmpeg", "AWS S3", "Node.js", "HLS", "Video.js"],
     slug: "video-streaming",
   },
   {
-    title: "Database Performance Engineering",
-    description: "Achieved 99.9% reliability and eliminated N+1 queries through widespread hydration optimization and background job migrations.",
+    title: "Removing hidden platform bottlenecks before they became incidents",
+    description: "Established a repeatable workload discipline that reduced avoidable data work, protected request paths, and improved operating efficiency.",
     tags: ["PostgreSQL", "Mongoose", "RabbitMQ", "Redis"],
     slug: "database-performance",
   },

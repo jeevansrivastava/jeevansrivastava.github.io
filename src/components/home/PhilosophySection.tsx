@@ -10,19 +10,13 @@ export function PhilosophySection() {
         </h3>
         <div className="flex flex-col gap-6">
           <p>
-            I believe that the best systems are the ones you never have to think about. 
-            Complexity is a liability; simplicity is a prerequisite for reliability.
+            I believe the best systems make the right thing easy for users and operators. Complexity must earn its place; explicit boundaries and observable behavior are prerequisites for reliability.
           </p>
           <p>
-            As a Staff Engineer, my job isn't just to write code—it's to multiply the 
-            effectiveness of the entire engineering organization. This means designing 
-            clear abstractions, enforcing strict observability, and fostering a culture 
-            where data-driven decisions replace guesswork.
+            My job is to turn uncertain product goals into systems a team can understand, evolve, and operate. That means making architectural decisions explicit, measuring the critical paths, and replacing guesswork with evidence.
           </p>
           <p>
-            Whether it's right-sizing a Redis cluster to save 25% on AWS, or debugging 
-            a multi-agent AI pipeline down to the millisecond, I optimize for two metrics 
-            above all else: <span className="text-yellow">developer velocity</span> and <span className="text-green">end-user latency</span>.
+            Whether I am right-sizing infrastructure or debugging an AI workflow, I optimize for a balanced operating system: <span className="text-yellow">developer velocity</span>, <span className="text-green">end-user experience</span>, and measurable reliability.
           </p>
         </div>
       </div>

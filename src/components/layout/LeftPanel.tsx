@@ -69,10 +69,10 @@ export function LeftPanel() {
             Srivastava
           </Link>
           <p className="font-mono text-[0.82rem] text-accent font-medium tracking-[0.3px] mb-5">
-            Backend & AI Infrastructure
+            AI Systems Architect
           </p>
           <p className="text-[0.92rem] text-muted leading-[1.75] max-w-[300px]">
-            A deeply curious engineer and enthusiastic learner. I architect high-performance distributed systems and solve hard technical problems from first principles.
+            I architect real-time AI, data, and cloud systems that remain dependable under real-world constraints.
           </p>
         </div>
 

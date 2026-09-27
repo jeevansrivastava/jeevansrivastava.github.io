@@ -11,8 +11,8 @@ export function CareerHighlights() {
           <div className="pl-6 md:pl-8">
             <span className="text-accent">"experience"</span>: <span className="text-yellow">"<AnimatedCounter value="14" suffix="+" inline /> years"</span>,
             <br />
-            <span className="text-accent">"core_focus"</span>: <span className="text-dim">[</span>
-            <span className="text-green">"AI Infrastructure"</span>, <span className="text-green">"Distributed Systems"</span>
+            <span className="text-accent">"architecture_focus"</span>: <span className="text-dim">[</span>
+            <span className="text-green">"Dependable AI Products"</span>, <span className="text-green">"Platform Reliability"</span>
             <span className="text-dim">]</span>,
             <br />
             <span className="text-accent">"key_metrics"</span>: <span className="text-dim">{"{"}</span>

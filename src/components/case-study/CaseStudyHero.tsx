@@ -22,7 +22,7 @@ export function CaseStudyHero({ title, role, stack, duration }: CaseStudyHeroPro
           <div className="text-dim">Role:</div>
           <div className="text-text">{role}</div>
           
-          <div className="text-dim">Stack:</div>
+          <div className="text-dim">Evidence:</div>
           <div className="text-text flex flex-wrap gap-2">
             {stack.map(tech => (
               <span key={tech} className="text-green">{tech}</span>

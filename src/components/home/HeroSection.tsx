@@ -19,6 +19,11 @@ export function HeroSection() {
           <span className="text-accent mr-3 font-bold">&gt;</span>
           <Typewriter />
         </p>
+        <p className="mt-5 max-w-[720px] text-[1.05rem] leading-[1.8] text-muted">
+          I turn uncertain AI and platform bets into systems teams can ship,
+          measure, operate, and evolve—under real users, imperfect data, and
+          real-world constraints.
+        </p>
       </div>
     </section>
   );
