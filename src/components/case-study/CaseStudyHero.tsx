@@ -22,7 +22,7 @@ export function CaseStudyHero({ study }: { study: Study }) {
         </div>
         <div>
           <dt>Context</dt>
-          <dd>Professional work · {study.period}</dd>
+          <dd>{study.context ?? `Professional work · ${study.period}`}</dd>
         </div>
       </dl>
       <div className="tag-list" aria-label="Technologies">

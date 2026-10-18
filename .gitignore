@@ -13,6 +13,9 @@
 # testing
 /coverage
 
+# Local design notes, screenshots, and verification evidence
+/docs/
+
 # next.js
 /.next/
 /out/

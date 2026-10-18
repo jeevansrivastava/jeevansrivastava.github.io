@@ -1,12 +1,13 @@
 import { NotebookPage } from "@/components/layout/NotebookPage";
 import { PageDoodle } from "@/components/ui/PageDoodle";
 import Link from "next/link";
+import { profile } from "@/content/portfolio";
 import { ExpertiseGrid } from "@/components/home/ExpertiseGrid";
 import { ContactCTA } from "@/components/home/ContactCTA";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "About",
-  "Jeevan Jyoti Srivastava is a Senior Engineering Manager with approximately 15 years in software, focused on hands-on backend and AI infrastructure work.",
+  "Jeevan Jyoti Srivastava leads engineering across backend platforms and AI products, with hands-on work in architecture, retrieval, subscriptions and production operations.",
   "/about",
 );
 export default function AboutPage() {
@@ -20,10 +21,7 @@ export default function AboutPage() {
           <br />
           <em>Accountable for the system.</em>
         </h1>
-        <p>
-          I’m a Senior Engineering Manager who wants to stay hands-on with the
-          engineering decisions that shape a product.
-        </p>
+        <p>{profile.summary}</p>
       </header>
       <div className="reading-layout">
         <section className="reading-section">
@@ -36,9 +34,10 @@ export default function AboutPage() {
             query, queue or infrastructure decision behind it.
           </p>
           <p>
-            My background includes learning platforms, APIs, video delivery,
-            cloud operations and real-time AI tutoring. The common thread is
-            responsibility for how the parts behave together.
+            My background spans learning platforms, document retrieval,
+            subscriptions, identity integrations, media delivery and real-time
+            AI. I also build operational tools that connect system behaviour
+            with learner activity, capacity and cost.
           </p>
         </section>
         <section className="reading-section">

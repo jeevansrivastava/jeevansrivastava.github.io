@@ -1,24 +1,24 @@
 const domains = [
   {
     number: "01",
-    title: "Backend & distributed systems",
+    title: "Backend & platform engineering",
     description:
-      "APIs, data access and asynchronous workloads. Clear boundaries between interactive requests, durable state and expensive background work.",
-    tools: "Node.js · Python · FastAPI · PostgreSQL · Redis",
+      "I build the services behind product workflows: APIs, data access, subscriptions, identity integrations and background processing. My focus is clear service boundaries, reliable state changes and recovery when work is interrupted.",
+    tools: "Node.js · TypeScript · Python · PostgreSQL · Redis · RabbitMQ",
   },
   {
     number: "02",
-    title: "AI systems & real-time interaction",
+    title: "Generative AI, retrieval & voice",
     description:
-      "Generative AI, LLM applications and retrieval-augmented generation (RAG). Voice pipelines and bounded agents coordinated with product state, media and recovery.",
-    tools: "LLMs · Generative AI · RAG · LiveKit · Streaming",
+      "I connect LLMs with documents, application state and real-time interaction. My work includes PDF and OCR pipelines, embeddings, vector search, retrieval-augmented generation (RAG), bounded agents and coordinated speech delivery.",
+    tools: "LLMs · RAG · pgvector · LiveKit · Speech pipelines · Langfuse",
   },
   {
     number: "03",
-    title: "Cloud & production engineering",
+    title: "Cloud, reliability & operations",
     description:
-      "Diagnosing bottlenecks, understanding capacity and making cost-performance decisions from operating evidence.",
-    tools: "AWS · Docker · Queues · CI/CD · Tracing",
+      "I investigate production bottlenecks and build tools that help teams understand system behaviour, capacity and cost. That includes operational dashboards, workload analysis and recoverable processing pipelines.",
+    tools: "AWS · Docker · Observability · Performance analysis · Job recovery",
   },
 ];
 export function ExpertiseGrid() {

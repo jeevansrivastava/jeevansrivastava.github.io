@@ -27,9 +27,9 @@ export function StudyPage({ study }: { study: Study }) {
       <section className="reading-section">
         <h2>How the system fits together</h2>
         <SystemFlow steps={study.flow} />
-        <a className="text-link" href={`/diagrams/${study.slug}.svg`}>
+        {study.diagram && <a className="text-link" href={study.diagram}>
           Open architecture diagram ↗
-        </a>
+        </a>}
       </section>
       <section className="reading-section">
         <h2>The consequential decisions</h2>
@@ -53,13 +53,6 @@ export function StudyPage({ study }: { study: Study }) {
         <blockquote className="case-callout">
           <p>{study.lesson}</p>
         </blockquote>
-      </section>
-      <section className="reading-section evidence-note">
-        <h2>About this account</h2>
-        <p>{study.evidence}</p>
-        <Link className="text-link" href="/contact">
-          Discuss the engineering decisions ↗
-        </Link>
       </section>
       <nav className="case-next" aria-label="Case study navigation">
         <span>Next case study</span>

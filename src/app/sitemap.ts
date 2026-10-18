@@ -1,3 +1,4 @@
+import { studies } from "@/content/portfolio";
 import { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
@@ -24,30 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
-    {
-      url: `${baseUrl}/case-studies/ai-voice-application`,
+    ...studies.map((study) => ({
+      url: `${baseUrl}/case-studies/${study.slug}`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/case-studies/aws-cost-intelligence`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/case-studies/video-streaming`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/case-studies/database-performance`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
+    })),
     {
       url: `${baseUrl}/articles`,
       lastModified: new Date(),

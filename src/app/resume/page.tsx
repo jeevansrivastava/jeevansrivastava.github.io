@@ -19,8 +19,7 @@ export default function ResumePage() {
         <h1>Engineering experience.</h1>
         <p>
           Approximately 15 years building software, designing platforms and
-          leading engineering teams. Focused on hands-on backend and AI
-          infrastructure work.
+          leading engineering teams. {profile.summary}
         </p>
         <PrintResume />
       </header>
@@ -29,8 +28,7 @@ export default function ResumePage() {
         <a href={profile.linkedin}>LinkedIn</a> ·{" "}
         <a href={profile.github}>GitHub</a>
         <span className="print-only">
-          jeevansrivastava.com · linkedin.com/in/jeevansrivastava ·
-          github.com/jeevansrivastava
+          jeevansrivastava.com · {profile.linkedin.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")} · github.com/jeevansrivastava
         </span>
       </p>
       <div className="company-history">
@@ -48,16 +46,18 @@ export default function ResumePage() {
         <h2>Technical focus</h2>
         <p>
           <strong>AI & language models:</strong> Generative AI, large language
-          models (LLMs), retrieval-augmented generation (RAG), agent workflows
-          and real-time voice pipelines.
+          models (LLMs), retrieval-augmented generation (RAG), PDF and OCR
+          pipelines, embeddings, pgvector, bounded agents, LiveKit and Langfuse.
         </p>
         <p>
-          <strong>Backend & data:</strong> Node.js, Python, FastAPI, PostgreSQL,
-          MongoDB, Redis and RabbitMQ.
+          <strong>Backend & platforms:</strong> Node.js, TypeScript, Python,
+          FastAPI, PostgreSQL, MongoDB, Redis and RabbitMQ. Subscriptions,
+          entitlements, identity integrations and asynchronous workflows.
         </p>
         <p>
-          <strong>Cloud & production:</strong> AWS, Docker, observability,
-          performance and production reliability.
+          <strong>Cloud & operations:</strong> AWS, Docker, observability,
+          performance analysis, operational dashboards and recoverable job
+          processing.
         </p>
       </section>
     </article>

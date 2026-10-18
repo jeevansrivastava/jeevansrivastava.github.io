@@ -14,7 +14,7 @@ export function PageDoodle({ kind }: { kind: Kind }) {
         {kind === "about" && <>
           <path d="m45 38 145-9 9 130-144 10Z" fill="#d7d9b0" />
           <path d="m52 43 131-5 5 112-129 8Z" strokeDasharray="3 5" />
-          <text x="78" y="107" fontFamily="Georgia,serif" fontStyle="italic" fontSize="40" stroke="none" fill="currentColor">{'{ js }'}</text>
+          <image href="/logo.svg" x="72" y="47" width="94" height="94" />
           <path d="m86 23 56-3 3 29-56 3Z" fill="#e4c285" stroke="none" />
           <path d="m170 129 8 17 19 2-14 14 3 19-18-9-17 10 3-20-14-12 20-4Z" fill="#e5b96a" />
           <path d="m26 65-10-6m13 21-18 3m190-27 12-9" />

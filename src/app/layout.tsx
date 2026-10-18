@@ -9,6 +9,7 @@ import "./career.css";
 import { LeftPanel } from "@/components/layout/LeftPanel";
 import { MobileHeader } from "@/components/layout/MobileHeader";
 import { profile } from "@/content/portfolio";
+import { BrandMark } from "@/components/ui/BrandMark";
 export const metadata: Metadata = {
   metadataBase: new URL("https://jeevansrivastava.com"),
   title: {
@@ -36,6 +37,7 @@ export default function RootLayout({
               className="identity"
               aria-label="Jeevan Jyoti Srivastava, home"
             >
+              <BrandMark />
               <span>
                 Jeevan Jyoti Srivastava
                 <small>Engineering leadership · Backend & AI</small>
@@ -51,6 +53,7 @@ export default function RootLayout({
         <footer className="site-footer">
           <div>
             <Link href="/" className="footer-name">
+              <BrandMark />
               Jeevan Jyoti Srivastava
             </Link>
             <p>My work, experience and occasional notes.</p>

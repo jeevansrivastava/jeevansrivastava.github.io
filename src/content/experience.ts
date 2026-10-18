@@ -29,8 +29,10 @@ export const experience: CompanyExperience[] = [
         date: "Apr 2022–present",
         note: "I moved into engineering management in April 2022; my current title is Senior Engineering Manager.",
         details: [
-          "Architecture and hands-on engineering for AI Didi, a real-time voice tutor with streaming speech, specialized learning agents and session state.",
-          "Designed coordination between model streaming, sentence chunking and ordered audio delivery.",
+          "Designed and built a conversational learning voice pipeline, coordinating model streaming, sentence chunking, ordered audio delivery and learner state.",
+          "Built document-processing and retrieval pipelines that turn learning material into searchable, structured knowledge using OCR, embeddings and PostgreSQL vector search.",
+          "Developed subscription and entitlement workflows covering usage limits, plan changes, payment grace periods and refunds.",
+          "Built operational dashboards connecting learner activity, retention and AI costs with account- and session-level investigation.",
           "Worked on voice-pipeline observability, platform performance, background workloads and AWS capacity decisions.",
           "Led engineering delivery and mentored engineers while remaining involved in implementation and architecture.",
         ],

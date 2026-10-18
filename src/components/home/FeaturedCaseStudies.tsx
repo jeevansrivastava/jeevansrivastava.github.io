@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { studies } from "@/content/portfolio";
+import { studies, featuredStudies } from "@/content/portfolio";
 import { ProjectArtwork } from "./ProjectArtwork";
-export function FeaturedCaseStudies() {
+export function FeaturedCaseStudies({ showAllLink = true }: { showAllLink?: boolean }) {
   return (
     <section id="selected-work" className="section creative-work" aria-labelledby="work-title">
       <div className="section-heading"><div><p className="eyebrow">02 / From the workbench</p><h2 id="work-title">Good questions.<br /><em>Working answers.</em></h2></div><p>Some things I’ve built, untangled and learned from. Open a case study for the decisions behind the work.</p></div>
       <div className="project-gallery">
-        {studies.map((study, i) => <article className={`project-sheet sheet-${i}`} key={study.slug}>
+        {featuredStudies.map((study, i) => <article className={`project-sheet sheet-${i}`} key={study.slug}>
           <Link className="art-link" href={`/case-studies/${study.slug}`} aria-label={`Explore ${study.title}`}><ProjectArtwork kind={i} /><span className="art-open" aria-hidden="true">↗</span></Link>
           <div className="project-sheet-copy">
             <p className="eyebrow">0{i+1} / {study.category}</p>
@@ -17,7 +17,7 @@ export function FeaturedCaseStudies() {
           </div>
         </article>)}
       </div>
-      <p className="creative-evidence">Real professional work. Simplified architecture. Evidence and trade-offs in every account.</p>
+      {showAllLink && <div className="all-studies-link"><Link className="text-link" href="/case-studies">Explore all {studies.length} case studies <span aria-hidden="true">↗</span></Link></div>}
     </section>
   );
 }

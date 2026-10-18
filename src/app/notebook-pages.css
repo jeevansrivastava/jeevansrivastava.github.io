@@ -64,6 +64,26 @@ body.notebook-site .notebook-paper :is(a,button,input,textarea,summary):focus-vi
 .page-work .project-sheet h3 { font-size: 29px; }
 .page-work .project-art { height: 280px; }
 .page-work .project-sheet-copy { padding-inline: 12px; }
+.case-archive { margin-top: 64px; }
+.case-archive > h2 { font: 32px/1.3 "Bradley Hand", "Chalkboard SE", cursive; margin: 12px 0 26px; }
+.case-archive-link { display: grid; grid-template-columns: 36px minmax(0,1fr) 32px; align-items: start; gap: 22px; border-top: 1px dashed #b9aa8d; padding: 26px 0; }
+.case-archive-link:last-child { border-bottom: 1px dashed #b9aa8d; }
+.case-archive-number { font: 12px/1.8 var(--font-code); color: #823b2b; }
+.case-archive-link h3 { font: 28px/1.25 var(--font-display); letter-spacing: -.025em; margin: 10px 0; }
+.case-archive-link p:not(.eyebrow) { font-size: 13px; line-height: 1.8; color: #5c6056; max-width: 650px; }
+.case-archive-arrow { font-size: 25px; color: #823b2b; }
+.case-archive-link:hover h3 { color: #823b2b; text-decoration: underline; text-underline-offset: 5px; }
+@media (max-width: 620px) {
+  .case-archive { margin-top: 44px; }
+  .case-archive > h2 { font-size: 28px; }
+  .case-archive-link { grid-template-columns: minmax(0,1fr) 24px; gap: 10px; }
+  .case-archive-number { grid-column: 1 / -1; }
+  .case-archive-link h3 { font-size: 26px; }
+  .case-archive-link .eyebrow { font-size: 8px; }
+  .case-archive-link p:not(.eyebrow) { font-size: 12px; }
+  .case-cover-grid .subscription-art { top: 60px; }
+  .case-cover-grid .platform-note-art { top: 64px; gap: 9px; }
+}
 /* Casebook: artwork on the cover, then clear reading pages. */
 .page-study .reading-layout { max-width: none; counter-reset: chapter; }
 .page-study .case-hero { padding-top: 12px; }
@@ -98,9 +118,6 @@ body.notebook-site .notebook-paper :is(a,button,input,textarea,summary):focus-vi
 .page-study .case-callout { position: relative; margin: 30px 10px; padding: 28px; background: #e7c98e; border: 0; box-shadow: 3px 4px 0 #292d2810; transform: rotate(-.7deg); }
 .page-study .case-callout::before { content: ''; position: absolute; width: 65px; height: 21px; top: -11px; left: calc(50% - 32px); background: #c9b98dc9; transform: rotate(6deg); }
 .page-study .case-callout p { font: 25px/1.55 var(--font-display); color: #343b30; }
-.page-study .evidence-note { background: #e4e5d6; border: 1px dashed #a7ac94; padding: 24px; border-radius: 2px; }
-.page-study .evidence-note h2 { font: 23px/1.3 "Bradley Hand", "Chalkboard SE", cursive; }
-.page-study .evidence-note p { font-size: 13px; }
 .page-study .case-next { border-top-style: dashed; }
 /* Resume: a career timeline on paper, with a separate print treatment below. */
 .page-resume .reading-layout { max-width: none; }
@@ -141,6 +158,8 @@ body.notebook-site .notebook-paper :is(a,button,input,textarea,summary):focus-vi
   .case-cover-grid { gap: 26px; grid-template-columns: 1.4fr 1fr; }
   .page-study .case-hero h1 { font-size: 44px; }
   .case-cover-grid .project-art { height: 250px; }
+  .case-cover-grid .platform-note-art { top: 70px; gap: 7px; }
+  .case-cover-grid .platform-note-art > span { padding: 6px 12px; font-size: 16px; }
   .case-cover-grid .art-caption { font-size: 14px; }
   .case-cover-grid .voice-orbit { transform: scale(.65); }
   .case-cover-grid .platform-blocks { transform: rotate(-12deg) scale(.7); top: 60px; }
@@ -223,9 +242,6 @@ body.notebook-site .notebook-paper :is(a,button,input,textarea,summary):focus-vi
   .page-study .decision-table th:first-child,.page-study .decision-table td:first-child { padding-left: 0; }
   .page-study .case-callout { margin-inline: 0; padding: 24px 20px; }
   .page-study .case-callout p { font-size: 23px; }
-  .page-study .evidence-note { padding: 22px 18px; }
-  .page-study .evidence-note h2 { font-size: 23px; }
-  .page-study .evidence-note p { font-size: 12px; }
   .page-study .case-next { display: block; }
   .page-study .case-next a { display: block; margin-top: 12px; }
   .page-resume .career-entry { grid-template-columns: 1fr; gap: 18px; }

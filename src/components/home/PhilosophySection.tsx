@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandMark } from "@/components/ui/BrandMark";
 export function PhilosophySection() {
   return (
     <section
@@ -12,6 +13,7 @@ export function PhilosophySection() {
           <br />
           in a few words.
         </span>
+        <BrandMark className="background-mark" />
       </div>
       <div>
         <h2 id="background-title">
@@ -30,9 +32,10 @@ export function PhilosophySection() {
             real-time AI.
           </p>
           <p>
-            I’m currently a Senior Engineering Manager. The part I want to keep
-            doing is hands-on: working through the architecture, understanding
-            the failure, and building the change.
+            As a Senior Engineering Manager, I lead delivery and mentor engineers
+            while staying involved in architecture and implementation. My work
+            connects product workflows with the systems and tools that keep
+            them running.
           </p>
           <Link href="/about" className="text-link">
             More about me <span aria-hidden="true">↗</span>

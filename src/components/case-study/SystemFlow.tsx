@@ -9,8 +9,8 @@ export function SystemFlow({
     <figure className={`system-flow ${compact ? "compact-flow" : ""}`}>
       <figcaption>
         {compact
-          ? "AI Didi / system overview"
-          : "Architecture / simplified system view"}
+          ? "Voice application / system overview"
+          : "Architecture / system overview"}
       </figcaption>
       <ol>
         {steps.map((step, i) => (
@@ -28,11 +28,7 @@ export function SystemFlow({
           </li>
         ))}
       </ol>
-      <p className="flow-caption">
-        {compact
-          ? "One learning journey. Explicit state across every handoff."
-          : "Read in sequence; supporting state and operational signals span the flow."}
-      </p>
+      {compact && <p className="flow-caption">One learning journey. Explicit state across every handoff.</p>}
     </figure>
   );
 }
