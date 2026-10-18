@@ -1,38 +1,69 @@
-import { SectionLabel } from "@/components/ui/SectionLabel";
+import { NotebookPage } from "@/components/layout/NotebookPage";
+import { PageDoodle } from "@/components/ui/PageDoodle";
+import Link from "next/link";
 import { ExpertiseGrid } from "@/components/home/ExpertiseGrid";
-
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "About | Jeevan Jyoti Srivastava",
-  description: "AI Systems Architect specializing in dependable real-time AI, distributed systems, and cloud platforms.",
-};
-
+import { ContactCTA } from "@/components/home/ContactCTA";
+import { pageMetadata } from "@/lib/metadata";
+export const metadata = pageMetadata(
+  "About",
+  "Jeevan Jyoti Srivastava is a Senior Engineering Manager with approximately 15 years in software, focused on hands-on backend and AI infrastructure work.",
+  "/about",
+);
 export default function AboutPage() {
   return (
-    <div className="mb-24">
-      <SectionLabel command="whoami --verbose" />
-      
-      <div className="mb-12">
-        <div className="text-[1.05rem] leading-[1.85] text-muted max-w-[750px] flex flex-col gap-5">
+    <NotebookPage label="About me" number="02" variant="about">
+      <header className="page-intro illustrated-intro">
+        <PageDoodle kind="about" />
+        <p className="eyebrow">About / Jeevan Jyoti Srivastava</p>
+        <h1>
+          Close to the code.
+          <br />
+          <em>Accountable for the system.</em>
+        </h1>
+        <p>
+          I’m a Senior Engineering Manager who wants to stay hands-on with the
+          engineering decisions that shape a product.
+        </p>
+      </header>
+      <div className="reading-layout">
+        <section className="reading-section">
+          <h2>From implementation to ownership</h2>
           <p>
-            Hi, I&apos;m Jeevan—an AI Systems Architect and engineering leader with 14+ years of experience. I turn uncertain product and platform bets into systems teams can ship, measure, operate, and evolve.
+            Over approximately 15 years in software, my work has moved from
+            backend development into platform architecture, production
+            problem-solving and technical leadership. I enjoy tracing a
+            difficult problem from the user experience down to the request,
+            query, queue or infrastructure decision behind it.
           </p>
           <p>
-            <strong className="text-accent">What I bring:</strong> I make the consequential decisions explicit: what to protect, which trade-offs to make, how to validate the path, and what operating capability must remain after delivery. That has included recovering critical API response times from 19 seconds to sub-500ms, right-sizing cloud spend from production evidence, and designing media delivery for variable network conditions.
+            My background includes learning platforms, APIs, video delivery,
+            cloud operations and real-time AI tutoring. The common thread is
+            responsibility for how the parts behave together.
+          </p>
+        </section>
+        <section className="reading-section">
+          <h2>What hands-on leadership means to me</h2>
+          <p>
+            It means staying involved in implementation, reviewing failure
+            scenarios and making consequential decisions explicit. It also means
+            leaving enough context, instrumentation and documentation for other
+            engineers to operate and improve the system.
           </p>
           <p>
-            <strong className="text-accent">My current focus is real-time AI systems.</strong> I architect voice and multimodal learning products with explicit state, bounded AI behavior, operating evidence, and graceful recovery. The goal is not an impressive demo; it is a dependable product that behaves well for learners, operators, and the teams that evolve it.
+            I’m interested in Staff and Principal Backend Engineer roles, AI
+            infrastructure and backend platform work, and selectively in
+            technical leadership roles with substantial engineering ownership.
+            International remote opportunities are welcome.
           </p>
-          <p>
-            I lead through clear technical strategy, evidence-led delivery, and infrastructure treated as a product. I build small, high-leverage teams that can make difficult decisions in the open and operate critical systems with confidence.
-          </p>
-        </div>
+          <Link className="text-link" href="/resume">
+            View my experience →
+          </Link>
+        </section>
       </div>
-      
-      <div className="mt-16">
-        <ExpertiseGrid />
+      <ExpertiseGrid />
+      <div className="section">
+        <ContactCTA />
       </div>
-    </div>
+    </NotebookPage>
   );
 }

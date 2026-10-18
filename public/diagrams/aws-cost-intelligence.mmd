@@ -1,0 +1,8 @@
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#e9e1cf","primaryTextColor":"#292d28","primaryBorderColor":"#a39988","lineColor":"#9d3726","fontFamily":"Arial","fontSize":"16px"}}}%%
+flowchart TD
+A["Authenticated user journey"] --> B["Application request path"]
+B --> C["Cached lookup with bounded TTL"]
+B --> D["Queue expensive file and report work"]
+D --> E["Background workers"]
+B -.-> F["Request timing / errors / CloudWatch"]
+F --> G["Representative load validation"]

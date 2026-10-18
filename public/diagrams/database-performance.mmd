@@ -1,0 +1,8 @@
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#e9e1cf","primaryTextColor":"#292d28","primaryBorderColor":"#a39988","lineColor":"#9d3726","fontFamily":"Arial","fontSize":"16px"}}}%%
+flowchart TD
+A["API request"] --> B["Select required fields and read behavior"]
+B --> C["Batch or control independent I/O"]
+C --> D["Interactive response"]
+B --> E["Queue expensive report work"]
+E --> F["Background processing"]
+F -.-> G["Job visibility and resource demand"]

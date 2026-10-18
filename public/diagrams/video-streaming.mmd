@@ -1,0 +1,7 @@
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#e9e1cf","primaryTextColor":"#292d28","primaryBorderColor":"#a39988","lineColor":"#9d3726","fontFamily":"Arial","fontSize":"16px"}}}%%
+flowchart TD
+A["Source video"] --> B["FFmpeg H.264 / 480p and 720p"]
+B --> C["HLS playlists and segments"]
+C --> D["S3 durable objects"]
+D --> E["CloudFront delivery"]
+E --> F["Video.js adaptive playback"]

@@ -1,0 +1,116 @@
+/* Career as a connected story: a few handwritten notes and one chapter per employer. */
+.career-journey { padding: 62px 4px 4px; }
+.journey-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
+.journey-heading h2 { font: 34px/1.25 "Bradley Hand", "Chalkboard SE", cursive; margin-top: 12px; }
+.journey-heading > a { display: inline-flex; align-items: center; gap: 18px; min-height: 44px; font-size: 12px; color: #ff9c82; }
+.journey-heading > a:hover { text-decoration: underline; text-underline-offset: 5px; }
+.journey-notes { list-style: none; margin: 0; padding: 8px 0 0; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 26px; }
+.journey-notes li { min-width: 0; }
+.journey-note { position: relative; display: flex; flex-direction: column; height: 100%; padding: 26px 26px 20px; background: #e7c98e; color: #29332c; border-radius: 3px; box-shadow: 4px 6px 0 #0002; transform: rotate(-1.5deg); transition: transform .22s ease,box-shadow .22s ease; }
+.journey-note-dociety { background: #d5c9df; transform: rotate(1deg); }
+.journey-note-uolo { background: #d7d9b0; transform: rotate(-.7deg); }
+.journey-note::before { content: ''; position: absolute; width: 64px; height: 22px; top: -11px; left: calc(50% - 32px); background: #cbbd97cc; border-inline: 1px dashed #8b785980; transform: rotate(-5deg); }
+.journey-note:hover,.journey-note:focus-visible { transform: translateY(-5px) rotate(0) !important; box-shadow: 4px 12px 0 #0002; }
+body.notebook-site .journey-note:focus-visible { outline-color: #ff9c82; }
+.journey-date { font: 10px/1.6 var(--font-code); color: #565646; padding-right: 42px; }
+.journey-stamp { position: absolute; top: 22px; right: 22px; border: 1px dashed #746c50; border-radius: 50%; width: 30px; height: 30px; display: grid; place-items: center; font: 12px Georgia,serif; color: #6d3022; transform: rotate(12deg); }
+.journey-note h3 { font: 35px/1.2 var(--font-display); margin: 22px 0 10px; letter-spacing: -.025em; }
+.journey-chapter { font: 21px/1.3 "Bradley Hand", "Chalkboard SE", cursive; color: #6d3022; }
+.journey-story { font-size: 12px; line-height: 1.85; color: #424739; margin-top: 14px; margin-bottom: 24px; }
+.journey-progression { font-size: 11px; line-height: 1.75; color: #424739; border-top: 1px dashed #a49c80; padding-top: 14px; margin-top: auto; }
+.journey-open { display: flex; align-items: center; justify-content: space-between; gap: 16px; font: 15px/1.5 "Bradley Hand", "Chalkboard SE", cursive; color: #6d3022; margin-top: 14px; }
+.more-experience { margin-top: 24px; }
+.more-experience > summary { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 24px; position: relative; padding: 20px 44px 20px 0; cursor: pointer; list-style: none; border-block: 1px dashed #b9aa8d; }
+.more-experience > summary::-webkit-details-marker { display: none; }
+.more-label { font: 23px/1.3 "Bradley Hand", "Chalkboard SE", cursive; }
+.more-context { font-size: 11px; }
+.more-symbol { position: absolute; right: 4px; font: 26px/1 Georgia,serif; }
+.more-symbol::before { content: '+'; }
+.more-experience[open] > summary .more-symbol::before { content: '−'; }
+.more-experience > summary:hover .more-label { text-decoration: underline; text-underline-offset: 5px; }
+.resume-more { margin: 0 0 30px; color: #823b2b; }
+.resume-more .more-context { color: #5c5344; }
+.resume-more .company-chapter { padding-top: 30px; }
+/* The company heading owns the tenure; connected role entries show progression within it. */
+.company-history { margin-top: 30px; }
+.company-chapter { border-top: 1px dashed #b9aa8d; padding-block: 30px 36px; scroll-margin-top: 28px; }
+.company-chapter:first-child { border-top: 0; padding-top: 8px; }
+.company-heading { display: flex; justify-content: space-between; align-items: center; gap: 28px; }
+.company-heading h2 { font: 39px/1.15 var(--font-display); margin-top: 10px; letter-spacing: -.035em; }
+.company-legal-name { font-size: 11px; margin-top: 8px; }
+.company-tenure { flex-shrink: 0; font: 11px/1.6 var(--font-code); padding: 9px 14px; color: #5c5344; border: 1px solid #b9aa8d; border-radius: 3px; background: #e5dbc2; }
+.company-chapter-title { font: 23px/1.4 "Bradley Hand", "Chalkboard SE", cursive; color: #9d3726; margin-top: 14px; }
+.company-roles { margin: 30px 0 0 6px; }
+.company-role { position: relative; border-left: 1px dashed #b9aa8d; padding: 0 0 32px 30px; }
+.company-role:last-child { padding-bottom: 0; }
+.company-role::before { content: ''; position: absolute; top: 8px; left: -5px; width: 9px; height: 9px; border: 2px solid #f3eddf; border-radius: 50%; background: #a53725; }
+.role-heading { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.role-heading h3 { font: 24px/1.25 var(--font-display); letter-spacing: -.02em; }
+.role-current { font-size: 9px; color: #3d513c; padding: 4px 8px; border: 1px solid #a5b194; background: #dfe4cd; border-radius: 100px; }
+.role-dates { font: 10px/1.7 var(--font-code); color: #685e4f; margin-top: 8px; }
+.role-context { font-size: 12px; max-width: 650px; line-height: 1.75; margin-top: 12px; }
+.company-role ul { margin: 16px 0 0; padding-left: 18px; list-style: disc; color: var(--muted); font-size: 13px; line-height: 1.9; max-width: 820px; }
+.company-role li + li { margin-top: 5px; }
+@media (max-width: 800px) {
+  .journey-heading h2 { font-size: 29px; }
+  .journey-notes { gap: 18px; }
+  .journey-note { padding: 24px 18px 18px; }
+  .journey-date { font-size: 9px; padding-right: 28px; }
+  .journey-stamp { right: 12px; width: 24px; height: 24px; font-size: 10px; }
+  .journey-note h3 { font-size: 30px; }
+  .journey-chapter { font-size: 19px; }
+  .journey-story { font-size: 11px; }
+  .journey-progression { font-size: 10px; }
+  .journey-open { font-size: 13px; }
+  .company-heading h2 { font-size: 34px; }
+  .company-tenure { font-size: 10px; padding: 8px 10px; }
+}
+@media (max-width: 620px) {
+  .career-journey { padding: 48px 16px 0; }
+  .journey-heading { align-items: start; flex-direction: column; gap: 6px; margin-bottom: 26px; }
+  .journey-heading .eyebrow { font-size: 8px; }
+  .journey-heading h2 { font-size: 30px; }
+  .journey-heading > a { font-size: 11px; }
+  .journey-notes { grid-template-columns: 1fr; gap: 30px; padding-inline: 4px; }
+  .more-experience > summary { flex-direction: column; align-items: start; gap: 4px; }
+  .journey-note { padding: 24px; }
+  .journey-date { font-size: 10px; }
+  .journey-stamp { right: 20px; width: 30px; height: 30px; }
+  .journey-note h3 { font-size: 34px; margin-top: 18px; }
+  .journey-chapter { font-size: 22px; }
+  .journey-story { font-size: 12px; margin-bottom: 18px; }
+  .journey-progression { font-size: 11px; }
+  .journey-open { font-size: 16px; }
+  .company-heading { flex-direction: column; align-items: start; gap: 16px; }
+  .company-heading h2 { font-size: 34px; }
+  .company-heading .eyebrow { font-size: 9px; }
+  .company-tenure { font-size: 10px; }
+  .company-chapter-title { font-size: 22px; }
+  .company-role { padding-left: 20px; }
+  .role-heading h3 { font-size: 24px; }
+  .role-heading { gap: 10px; }
+  .company-role ul { font-size: 12px; }
+  .role-context { font-size: 11px; }
+}
+@media print {
+  .resume-more { margin: 0; }
+  .resume-more > summary { display: none; }
+  .resume-more::details-content { display: contents; content-visibility: visible; }
+  .resume-more .company-chapter { padding-top: 14px; }
+  .company-history { margin-top: 10px; }
+  .company-chapter { padding-block: 14px 18px; break-inside: auto; }
+  .company-heading { flex-direction: row; align-items: start; gap: 16px; break-after: avoid; }
+  .company-heading .eyebrow,.company-chapter-title,.role-current { display: none; }
+  .company-heading h2 { font: 17pt/1.2 Georgia,serif; margin: 0; }
+  .company-legal-name { font-size: 8pt; margin-top: 4px; }
+  .company-tenure { background: none; border: 0; padding: 0; color: black; font-size: 8pt; }
+  .company-roles { margin: 14px 0 0; }
+  .company-role { border-left: 0; padding: 0 0 16px; break-inside: avoid; }
+  .company-role:last-child { padding-bottom: 0; }
+  .company-role::before { display: none; }
+  .role-heading h3 { font: 12pt/1.3 Arial,sans-serif; color: #29332c; }
+  .role-dates { font: 8pt/1.6 Arial,sans-serif; margin-top: 3px; }
+  .role-context { font-size: 9pt; margin-top: 6px; }
+  .company-role ul { font-size: 9pt; line-height: 1.7; margin-top: 8px; }
+  .company-role li + li { margin-top: 2px; }
+}

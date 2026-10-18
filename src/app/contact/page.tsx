@@ -1,38 +1,42 @@
-import { SectionLabel } from "@/components/ui/SectionLabel";
+import { NotebookPage } from "@/components/layout/NotebookPage";
+import { PageDoodle } from "@/components/ui/PageDoodle";
 import { ContactForm } from "@/components/contact/ContactForm";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Contact | Jeevan Jyoti Srivastava",
-  description: "Get in touch for engineering roles, consulting, or architecture reviews.",
-};
-
+import { profile } from "@/content/portfolio";
+import { pageMetadata } from "@/lib/metadata";
+export const metadata = pageMetadata(
+  "Contact",
+  "Discuss backend platforms, AI infrastructure and hands-on Staff or Principal engineering opportunities with Jeevan Jyoti Srivastava.",
+  "/contact",
+);
 export default function ContactPage() {
   return (
-    <div className="mb-24 max-w-[600px]">
-      <div className="mb-12">
-        <h1 className="text-[2rem] font-bold text-text mb-4">Get in Touch</h1>
-        <p className="text-muted text-[1.05rem] leading-relaxed">
-          I'm always open to collaborating with like-minded engineers, discussing complex system architecture, and exploring new ideas in AI infrastructure and distributed systems.
+    <NotebookPage label="Correspondence" number="05" variant="contact">
+      <header className="page-intro illustrated-intro">
+        <PageDoodle kind="contact" />
+        <p className="eyebrow">Contact</p>
+        <h1>
+          A direct line.
+          <br />
+          <em>Say hello.</em>
+        </h1>
+        <p>
+          For an engineering opportunity, a question about my work, or a
+          conversation with a fellow engineer.
         </p>
+      </header>
+      <div className="contact-layout">
+        <section className="contact-details">
+          <h2>You can reach me here</h2>
+          <p>
+            If you’re hiring, I’d like to hear about the team, the engineering
+            scope and how you work remotely. You can also email me directly.
+          </p>
+          <a href={`mailto:${profile.email}`}>{profile.email} ↗</a>
+          <a href={profile.linkedin}>Connect on LinkedIn ↗</a>
+          <a href={profile.github}>Explore GitHub ↗</a>
+        </section>
+        <ContactForm />
       </div>
-
-      <SectionLabel command="./send-message.sh" />
-
-      <ContactForm />
-
-      <div className="mt-16 pt-8 border-t border-dashed border-border font-mono text-[0.85rem] text-dim flex flex-col gap-3">
-        <div><span className="text-green">$</span> cat ./direct-contact.json</div>
-        <div className="pl-4 text-muted">
-          {"{"}
-          <br />
-          &nbsp;&nbsp;"email": <a href="mailto:hello@jeevansrivastava.com" className="text-accent hover:underline">"hello@jeevansrivastava.com"</a>,
-          <br />
-          &nbsp;&nbsp;"linkedin": <a href="https://www.linkedin.com/in/jeevanjsrivastava" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">"@jeevanjsrivastava"</a>
-          <br />
-          {"}"}
-        </div>
-      </div>
-    </div>
+    </NotebookPage>
   );
 }

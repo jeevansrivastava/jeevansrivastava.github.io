@@ -1,33 +1,36 @@
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
-
+import Link from "next/link";
+import { experience, type CompanyExperience } from "@/content/experience";
 export function CareerHighlights() {
+  const stops = experience.filter((company) => company.chapter);
   return (
-    <section id="highlights" className="mb-24">
-      <SectionLabel command="cat ./stats.json" />
-      <div className="bg-bg-card border border-dashed border-border rounded-[6px] p-6 font-mono text-[0.95rem] leading-[2] overflow-x-auto text-text">
+    <section className="career-journey" aria-labelledby="career-journey-title">
+      <div className="journey-heading">
         <div>
-          <span className="text-dim">{"{"}</span>
-          <div className="pl-6 md:pl-8">
-            <span className="text-accent">"experience"</span>: <span className="text-yellow">"<AnimatedCounter value="14" suffix="+" inline /> years"</span>,
-            <br />
-            <span className="text-accent">"architecture_focus"</span>: <span className="text-dim">[</span>
-            <span className="text-green">"Dependable AI Products"</span>, <span className="text-green">"Platform Reliability"</span>
-            <span className="text-dim">]</span>,
-            <br />
-            <span className="text-accent">"key_metrics"</span>: <span className="text-dim">{"{"}</span>
-            <div className="pl-6 md:pl-8">
-              <span className="text-accent">"api_response_time"</span>: <span className="text-green">"<AnimatedCounter value="500" prefix="&lt;" suffix="ms" inline />"</span>,
-              <br />
-              <span className="text-accent">"aws_cost_reduction"</span>: <span className="text-green">"<AnimatedCounter value="25" suffix="%" inline />"</span>,
-              <br />
-              <span className="text-accent">"traffic_scaling"</span>: <span className="text-green">"<AnimatedCounter value="10" suffix="x" inline /> capacity"</span>
-            </div>
-            <span className="text-dim">{"}"}</span>
-          </div>
-          <span className="text-dim">{"}"}</span>
+          <p className="eyebrow">People, platforms & a lot of learning</p>
+          <h2 id="career-journey-title">A few stops along the way.</h2>
         </div>
+        <Link href="/resume">Follow the full story <span aria-hidden="true">↗</span></Link>
       </div>
+      <ol className="journey-notes">
+        {stops.map((company, i) => <CareerNote key={company.id} company={company} number={i + 1} />)}
+      </ol>
     </section>
+  );
+}
+
+function CareerNote({ company, number }: { company: CompanyExperience; number: number }) {
+  return (
+    <li>
+      {/* Native fragment navigation reveals the target inside closed details. */}
+      <a href={`/resume#company-${company.id}`} className={`journey-note journey-note-${company.id}`}>
+        <span className="journey-date">{company.date}</span>
+        <span className="journey-stamp" aria-hidden="true">0{number}</span>
+        <h3>{company.name}</h3>
+        <p className="journey-chapter">{company.chapter}</p>
+        <p className="journey-story">{company.story}</p>
+        <span className="journey-progression">{company.roles.toReversed().map((role) => role.role).join(" → ")}</span>
+        <span className="journey-open">{company.id === "uolo" ? "Still writing this chapter" : "Read this chapter"} <span aria-hidden="true">↗</span></span>
+      </a>
+    </li>
   );
 }

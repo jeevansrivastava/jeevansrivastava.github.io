@@ -1,23 +1,42 @@
-import { SectionLabel } from "@/components/ui/SectionLabel";
-
+import Link from "next/link";
 export function PhilosophySection() {
   return (
-    <section id="philosophy" className="mb-24">
-      <SectionLabel command="cat ./philosophy.md" />
-      <div className="bg-bg-card border border-dashed border-border rounded-[6px] p-8 text-[0.95rem] leading-[1.8] text-muted font-mono">
-        <h3 className="text-accent font-bold text-[1.2rem] mb-6 pb-4 border-b border-border border-dashed">
-          # Engineering Philosophy
-        </h3>
-        <div className="flex flex-col gap-6">
+    <section
+      className="section personal-background"
+      aria-labelledby="background-title"
+    >
+      <div className="margin-label">
+        <span className="eyebrow">01 / Background</span>
+        <span className="margin-name">
+          Jeevan,
+          <br />
+          in a few words.
+        </span>
+      </div>
+      <div>
+        <h2 id="background-title">
+          I’ve moved into leadership.
+          <br />
+          <em>
+            I haven’t moved away
+            <br />
+            from engineering.
+          </em>
+        </h2>
+        <div className="background-prose">
           <p>
-            I believe the best systems make the right thing easy for users and operators. Complexity must earn its place; explicit boundaries and observable behavior are prerequisites for reliability.
+            My career started in software development in 2012. Since then, I’ve
+            worked on backend platforms, learning products, media delivery and
+            real-time AI.
           </p>
           <p>
-            My job is to turn uncertain product goals into systems a team can understand, evolve, and operate. That means making architectural decisions explicit, measuring the critical paths, and replacing guesswork with evidence.
+            I’m currently a Senior Engineering Manager. The part I want to keep
+            doing is hands-on: working through the architecture, understanding
+            the failure, and building the change.
           </p>
-          <p>
-            Whether I am right-sizing infrastructure or debugging an AI workflow, I optimize for a balanced operating system: <span className="text-yellow">developer velocity</span>, <span className="text-green">end-user experience</span>, and measurable reliability.
-          </p>
+          <Link href="/about" className="text-link">
+            More about me <span aria-hidden="true">↗</span>
+          </Link>
         </div>
       </div>
     </section>

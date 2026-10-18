@@ -1,0 +1,8 @@
+{
+  "routeViewportChecks": 30,
+  "axeViolations": 0,
+  "internalLinks": 14,
+  "functionalChecks": 14,
+  "maxObservedCLS": 0,
+  "runtimeErrors": []
+}

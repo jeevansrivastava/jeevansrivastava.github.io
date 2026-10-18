@@ -1,0 +1,9 @@
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#e9e1cf","primaryTextColor":"#292d28","primaryBorderColor":"#a39988","lineColor":"#9d3726","fontFamily":"Arial","fontSize":"16px"}}}%%
+flowchart TD
+A["Learner / LiveKit room"] --> B["Noise handling and speech recognition"]
+B --> C["Router and explicit learner state"]
+C --> D["Teaching / assessment / doubt handling"]
+D --> E["Model stream and sentence chunks"]
+E --> F["Ordered synthesis and audio playback"]
+C <--> G["Redis context / PostgreSQL progress"]
+D -.-> H["Traces and timing evidence"]

@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "size": "desktop",
+      "expandedNotes": 4,
+      "overlap": false,
+      "overflow": false
+    },
+    {
+      "size": "tablet",
+      "expandedNotes": 4,
+      "overlap": false,
+      "overflow": false
+    },
+    {
+      "size": "mobile",
+      "expandedNotes": 4,
+      "overlap": false,
+      "overflow": false
+    },
+    {
+      "size": "narrow",
+      "expandedNotes": 4,
+      "overlap": false,
+      "overflow": false
+    }
+  ],
+  "reducedMotionEntrance": "none"
+}

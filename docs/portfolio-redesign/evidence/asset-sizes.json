@@ -1,0 +1,13 @@
+{
+  "javascript": {
+    "files": 8,
+    "rawBytes": 638742,
+    "gzipBytes": 190340
+  },
+  "css": {
+    "files": 1,
+    "rawBytes": 28492,
+    "gzipBytes": 6749
+  },
+  "note": "Static homepage assets referenced by HTML; excludes analytics, route prefetch and later navigation. Gzip is calculated locally, not a measurement of deployed transfer encoding."
+}

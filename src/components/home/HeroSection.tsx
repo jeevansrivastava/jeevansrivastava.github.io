@@ -1,30 +1,24 @@
-"use client";
-
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { Typewriter } from "@/components/ui/Typewriter";
-
+import Link from "next/link";
+import { WorkbenchSketch } from "./WorkbenchSketch";
 export function HeroSection() {
   return (
-    <section id="about" className="mb-16 flex flex-col pt-4">
-      <SectionLabel command="whoami" />
-      <div className="text-[0.8rem] text-dim mb-6 leading-relaxed font-mono">
-        <p>Last login: {new Date().toDateString()} on ttys001</p>
-        <p>jeevan@mbp ~ % ./start_portfolio.sh</p>
-        <p className="text-green">[OK] Loading modules...</p>
-        <p className="text-green">[OK] Initializing session...</p>
+    <section className="notebook-hero" aria-labelledby="hero-title">
+      <div className="notebook-topline"><span>Jeevan’s field notes</span><span>Engineering, with intent. / Est. 2012</span></div>
+      <div className="notebook-spread">
+        <div className="notebook-intro">
+          <p className="eyebrow">Jeevan Jyoti Srivastava</p>
+          <h1 id="hero-title">Serious systems.<br /><em>A curious mind.</em></h1>
+          <p className="handwritten intro-scribble">Still asking “why?” Still building.</p>
+          <p className="notebook-description">I’m a Senior Engineering Manager who stays close to the code. I build backend platforms and AI systems—and work through the messy bits that make them real.</p>
+          <div className="actions">
+            <Link href="/case-studies" className="button button-primary">View case studies <span aria-hidden="true">↗</span></Link>
+            <Link href="/resume" className="button resume-link">View resume <span aria-hidden="true">↗</span></Link>
+          </div>
+        </div>
+        <WorkbenchSketch />
       </div>
-
-      <div className="mb-12">
-        <p className="font-mono text-dim text-[0.95rem]">
-          <span className="text-accent mr-3 font-bold">&gt;</span>
-          <Typewriter />
-        </p>
-        <p className="mt-5 max-w-[720px] text-[1.05rem] leading-[1.8] text-muted">
-          I turn uncertain AI and platform bets into systems teams can ship,
-          measure, operate, and evolve—under real users, imperfect data, and
-          real-world constraints.
-        </p>
-      </div>
+      <div className="notebook-bottomline"><span><i aria-hidden="true" /> Senior Engineering Manager · UOLO</span><a href="#selected-work">Turn to the work <span aria-hidden="true">↓</span></a></div>
+      <span className="book-ribbon" aria-hidden="true" />
     </section>
   );
 }

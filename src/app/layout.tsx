@@ -1,109 +1,95 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import Link from "next/link";
+import Script from "next/script";
 import "./globals.css";
+import "./personal.css";
+import "./creative.css";
+import "./notebook-pages.css";
+import "./career.css";
 import { LeftPanel } from "@/components/layout/LeftPanel";
 import { MobileHeader } from "@/components/layout/MobileHeader";
-import { GlobalBootSequence } from "@/components/layout/GlobalBootSequence";
-import Script from "next/script";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
+import { profile } from "@/content/portfolio";
 export const metadata: Metadata = {
-  title: "Jeevan Jyoti Srivastava | Staff Backend Engineer",
-  description:
-    "Portfolio of Jeevan Jyoti Srivastava — Staff Backend Engineer specializing in AI Infrastructure, Distributed Systems, Cloud Architecture, and Engineering Leadership.",
-  keywords:
-    "Jeevan Jyoti Srivastava, Staff Backend Engineer, AI Infrastructure, Distributed Systems, Cloud Architecture, Node.js, Python, PostgreSQL, AWS",
-  authors: [{ name: "Jeevan Jyoti Srivastava" }],
   metadataBase: new URL("https://jeevansrivastava.com"),
-  openGraph: {
-    type: "website",
-    url: "https://jeevansrivastava.com/",
-    title: "Jeevan Jyoti Srivastava | Staff Backend Engineer",
-    description:
-      "I architect AI infrastructure, distributed systems, and cloud platforms that scale.",
-    images: ["/og-image.png"],
+  title: {
+    default: "Jeevan Jyoti Srivastava | Backend & AI Infrastructure",
+    template: "%s | Jeevan Jyoti Srivastava",
   },
-  twitter: {
-    card: "summary_large_image",
-    site: "@thejeevan",
-    title: "Jeevan Jyoti Srivastava | Staff Backend Engineer",
-    description:
-      "I architect AI infrastructure, distributed systems, and cloud platforms that scale.",
-    images: ["/og-image.png"],
-  },
+  description:
+    "Hands-on engineering leadership in backend systems, AI infrastructure and cloud architecture. Explore architecture decisions, trade-offs and professional experience.",
+  authors: [{ name: profile.name }],
   robots: "index, follow",
-  alternates: {
-    canonical: "https://jeevansrivastava.com/",
-  },
 };
-
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <head>
-        {/* Google Analytics */}
+    <html lang="en">
+      <body className="notebook-site">
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
+        <header className="site-header">
+          <div className="header-inner">
+            <Link
+              href="/"
+              className="identity"
+              aria-label="Jeevan Jyoti Srivastava, home"
+            >
+              <span>
+                Jeevan Jyoti Srivastava
+                <small>Engineering leadership · Backend & AI</small>
+              </span>
+            </Link>
+            <LeftPanel />
+            <MobileHeader />
+          </div>
+        </header>
+        <main id="main-content" className="main-layout" tabIndex={-1}>
+          {children}
+        </main>
+        <footer className="site-footer">
+          <div>
+            <Link href="/" className="footer-name">
+              Jeevan Jyoti Srivastava
+            </Link>
+            <p>My work, experience and occasional notes.</p>
+          </div>
+          <nav aria-label="Elsewhere">
+            <a href={profile.github}>GitHub ↗</a>
+            <a href={profile.linkedin}>LinkedIn ↗</a>
+            <Link href="/articles">Writing</Link>
+            <a href={`mailto:${profile.email}`}>Email ↗</a>
+          </nav>
+          <small>© 2026</small>
+        </footer>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-13F34CY3BV"
           strategy="afterInteractive"
         />
-        <Script id="ga-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-13F34CY3BV');
-          `}
-        </Script>
-        {/* JSON-LD */}
+        <Script
+          id="ga-init"
+          strategy="afterInteractive"
+        >{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-13F34CY3BV');`}</Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              name: "Jeevan Jyoti Srivastava",
-              jobTitle: "Staff Backend Engineer",
-              url: "https://jeevansrivastava.com/",
-              sameAs: [
-                "https://github.com/jeevanjsrivastava",
-                "https://www.linkedin.com/in/jeevanjsrivastava",
-                "https://x.com/thejeevan",
-                "https://medium.com/@thejeevan",
+              name: profile.name,
+              jobTitle: profile.role,
+              url: "https://jeevansrivastava.com",
+              sameAs: [profile.github, profile.linkedin],
+              knowsAbout: [
+                "Backend engineering",
+                "AI infrastructure",
+                "Distributed systems",
+                "Cloud architecture",
               ],
-              description:
-                "I architect AI infrastructure, distributed systems, and cloud platforms that scale.",
             }),
           }}
         />
-      </head>
-      <body className="min-h-screen">
-        <LeftPanel />
-        <MobileHeader />
-        <main className="main-layout">
-          <GlobalBootSequence>
-            {children}
-            <footer className="pt-10 pb-6 flex items-center gap-2 font-mono text-xs text-dim">
-              <span className="text-green">$</span>
-              <span>echo &quot;© 2026 Jeevan Jyoti Srivastava&quot;</span>
-            </footer>
-          </GlobalBootSequence>
-        </main>
       </body>
     </html>
   );
