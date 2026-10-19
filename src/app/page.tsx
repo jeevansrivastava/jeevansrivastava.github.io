@@ -3,11 +3,12 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { FeaturedCaseStudies } from "@/components/home/FeaturedCaseStudies";
 import { HowIWork } from "@/components/home/HowIWork";
 import { PhilosophySection } from "@/components/home/PhilosophySection";
+import { ExpertiseGrid } from "@/components/home/ExpertiseGrid";
 import { ContactCTA } from "@/components/home/ContactCTA";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
-  "Backend & AI Infrastructure",
-  "Jeevan Jyoti Srivastava: hands-on engineering leadership in backend systems, real-time AI, distributed systems and cloud architecture.",
+  "Engineering Leader · AI Systems & Cloud Architecture",
+  "Jeevan Jyoti Srivastava leads engineering across AI products, distributed systems and cloud infrastructure. Explore architecture decisions, production outcomes and hands-on experience.",
   "/",
 );
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <PhilosophySection />
       <CareerHighlights />
       <FeaturedCaseStudies />
+      <ExpertiseGrid />
       <HowIWork />
       <ContactCTA />
     </div>

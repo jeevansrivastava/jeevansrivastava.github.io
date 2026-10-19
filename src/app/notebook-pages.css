@@ -37,6 +37,17 @@ body.notebook-site .notebook-paper :is(a,button,input,textarea,summary):focus-vi
 .notebook-paper .reading-section h3 { font-size: 19px; }
 .notebook-paper .reading-section p { font-size: 15px; line-height: 1.95; }
 /* About: a personal introduction followed by three notes on the work. */
+.page-about .portrait-intro { display: grid; grid-template-columns: minmax(0,1fr) 230px; gap: 44px; align-items: center; }
+.portrait-intro-copy > p:not(.eyebrow) { font-size: 15px; line-height: 1.85; max-width: 660px; }
+@media (max-width: 800px) {
+  .page-about .portrait-intro { grid-template-columns: minmax(0,1fr) 190px; gap: 24px; }
+  .portrait-intro-copy > p:not(.eyebrow) { font-size: 14px; }
+}
+@media (max-width: 620px) {
+  .page-about .portrait-intro { grid-template-columns: minmax(0,1fr); gap: 28px; }
+  .portrait-intro .portrait-card { grid-row: 1; width: 200px; max-width: 100%; }
+  .portrait-intro-copy > p:not(.eyebrow) { font-size: 13px; }
+}
 .page-about .reading-layout { max-width: 750px; margin-left: 0; }
 .page-about .section { padding-top: 56px; }
 .page-about .expertise-grid { gap: 24px; }

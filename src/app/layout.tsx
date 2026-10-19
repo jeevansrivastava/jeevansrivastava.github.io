@@ -6,6 +6,7 @@ import "./personal.css";
 import "./creative.css";
 import "./notebook-pages.css";
 import "./career.css";
+import "./consulting.css";
 import { LeftPanel } from "@/components/layout/LeftPanel";
 import { MobileHeader } from "@/components/layout/MobileHeader";
 import { profile } from "@/content/portfolio";
@@ -13,11 +14,11 @@ import { BrandMark } from "@/components/ui/BrandMark";
 export const metadata: Metadata = {
   metadataBase: new URL("https://jeevansrivastava.com"),
   title: {
-    default: "Jeevan Jyoti Srivastava | Backend & AI Infrastructure",
+    default: `${profile.name} | ${profile.role}`,
     template: "%s | Jeevan Jyoti Srivastava",
   },
   description:
-    "Hands-on engineering leadership in backend systems, AI infrastructure and cloud architecture. Explore architecture decisions, trade-offs and professional experience.",
+    "Engineering leadership and hands-on architecture across AI products, distributed systems and cloud infrastructure. Explore the work, decisions and experience of Jeevan Jyoti Srivastava.",
   authors: [{ name: profile.name }],
   robots: "index, follow",
 };
@@ -40,7 +41,7 @@ export default function RootLayout({
               <BrandMark />
               <span>
                 Jeevan Jyoti Srivastava
-                <small>Engineering leadership · Backend & AI</small>
+                <small>Engineering leadership · AI & cloud</small>
               </span>
             </Link>
             <LeftPanel />
@@ -56,12 +57,13 @@ export default function RootLayout({
               <BrandMark />
               Jeevan Jyoti Srivastava
             </Link>
-            <p>My work, experience and occasional notes.</p>
+            <p>Engineering practice, system decisions and occasional notes.</p>
           </div>
           <nav aria-label="Elsewhere">
             <a href={profile.github}>GitHub ↗</a>
             <a href={profile.linkedin}>LinkedIn ↗</a>
             <Link href="/articles">Writing</Link>
+            <Link href="/work-with-me">Advisory</Link>
             <a href={`mailto:${profile.email}`}>Email ↗</a>
           </nav>
           <small>© 2026</small>
@@ -81,7 +83,9 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: profile.name,
-              jobTitle: profile.role,
+              image: "https://jeevansrivastava.com/jeevan-srivastava.webp",
+              jobTitle: profile.currentRole,
+              worksFor: { "@type": "Organization", name: profile.company },
               url: "https://jeevansrivastava.com",
               sameAs: [profile.github, profile.linkedin],
               knowsAbout: [

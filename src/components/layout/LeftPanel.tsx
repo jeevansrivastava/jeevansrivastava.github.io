@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 export const navLinks = [
   { href: "/case-studies", label: "Case studies" },
   { href: "/about", label: "About" },
-  { href: "/resume", label: "Resume" },
+  { href: "/work-with-me", label: "Advisory" },
   { href: "/contact", label: "Contact" },
 ];
 // Retains the existing shared navigation component; now a horizontal desktop nav.

@@ -1,42 +1,45 @@
 const domains = [
   {
     number: "01",
-    title: "Backend & platform engineering",
-    description:
-      "I build the services behind product workflows: APIs, data access, subscriptions, identity integrations and background processing. My focus is clear service boundaries, reliable state changes and recovery when work is interrupted.",
-    tools: "Node.js · TypeScript · Python · PostgreSQL · Redis · RabbitMQ",
+    title: "Real-Time Voice & AI Systems Architecture",
+    description: "My work connects real-time interaction with production reliability. I define speech and state boundaries, tune interruptions, and trace each stage against a sub-second latency budget where the interaction requires it.",
+    tools: "LiveKit · WebRTC · Silero VAD · DTLN · State machines · Langfuse · OpenTelemetry",
   },
   {
     number: "02",
-    title: "Generative AI, retrieval & voice",
-    description:
-      "I connect LLMs with documents, application state and real-time interaction. My work includes PDF and OCR pipelines, embeddings, vector search, retrieval-augmented generation (RAG), bounded agents and coordinated speech delivery.",
-    tools: "LLMs · RAG · pgvector · LiveKit · Speech pipelines · Langfuse",
+    title: "Cloud Performance, Scale & Cost Optimization",
+    description: "I investigate the request, query or infrastructure constraint behind slow APIs and rising spend. That includes profiling hot paths, addressing 5XX cascades, offloading heavy work and right-sizing AWS capacity against measured demand.",
+    tools: "AWS · Node.js · PostgreSQL · Redis · RabbitMQ · Load testing",
   },
   {
     number: "03",
-    title: "Cloud, reliability & operations",
-    description:
-      "I investigate production bottlenecks and build tools that help teams understand system behaviour, capacity and cost. That includes operational dashboards, workload analysis and recoverable processing pipelines.",
-    tools: "AWS · Docker · Observability · Performance analysis · Job recovery",
+    title: "Production LLMOps & Deterministic Guardrails",
+    description: "I work on observable model behaviour and explicit product decisions: tool boundaries, retrieval rules, evaluation pipelines, token-cost controls and multi-provider fallbacks that preserve application state.",
+    tools: "LLMs · RAG · pgvector · Eval pipelines · Token budgets · Provider fallbacks",
+  },
+  {
+    number: "04",
+    title: "DevOps, Infrastructure-as-Code & Delivery",
+    description: "My focus is repeatable, recoverable infrastructure changes. That includes Terraform changes, zero-downtime delivery and rollback paths, with load validation and incident playbooks engineering teams can operate.",
+    tools: "Terraform · AWS · Docker · CI/CD · Observability · Incident runbooks",
   },
 ];
 export function ExpertiseGrid() {
   return (
-    <section className="section" aria-labelledby="expertise-title">
+    <section className="section consulting-capabilities" aria-labelledby="expertise-title">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">02 / Areas of focus</p>
-          <h2 id="expertise-title">Across the critical path.</h2>
+          <p className="eyebrow">Engineering / Areas of focus</p>
+          <h2 id="expertise-title">Where I focus.</h2>
         </div>
       </div>
       <div className="expertise-grid">
-        {domains.map((d) => (
-          <article key={d.number}>
-            <span className="domain-number">{d.number}</span>
-            <h3>{d.title}</h3>
-            <p>{d.description}</p>
-            <small>{d.tools}</small>
+        {domains.map((domain) => (
+          <article key={domain.number}>
+            <span className="domain-number">{domain.number}</span>
+            <h3>{domain.title}</h3>
+            <p>{domain.description}</p>
+            <small>{domain.tools}</small>
           </article>
         ))}
       </div>

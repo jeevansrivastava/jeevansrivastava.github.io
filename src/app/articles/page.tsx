@@ -1,10 +1,11 @@
 import { NotebookPage } from "@/components/layout/NotebookPage";
 import { PageDoodle } from "@/components/ui/PageDoodle";
 import { ArticlesSection } from "@/components/home/ArticlesSection";
+import { EngagementCTA } from "@/components/ui/EngagementCTA";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "Technical writing",
-  "Jeevan Jyoti Srivastava's writing archive on software engineering, architecture and system design.",
+  "Notes on production AI, cloud performance and architecture decisions from engineering leader Jeevan Jyoti Srivastava.",
   "/articles",
 );
 export default function ArticlesPage() {
@@ -24,6 +25,7 @@ export default function ArticlesPage() {
         </p>
       </header>
       <ArticlesSection />
+      <EngagementCTA />
     </NotebookPage>
   );
 }

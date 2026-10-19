@@ -4,8 +4,12 @@ export const profile = {
   github: "https://github.com/jeevansrivastava",
   linkedin: "https://www.linkedin.com/in/jeevanjsrivastava/",
   medium: "https://medium.com/@thejeevan",
-  role: "Senior Engineering Manager",
-  summary: "I lead engineering across backend platforms and AI products, staying hands-on with architecture, implementation and production operations.",
+  calendly: "https://calendly.com/jeevan-srivastavajj/30min",
+  role: "Engineering Leader · AI Systems & Cloud Architecture",
+  currentRole: "Senior Engineering Manager",
+  company: "UOLO",
+  advisorySummary: "Alongside my engineering leadership work, I’m open to selective architecture reviews and technical advisory conversations, depending on scope and availability.",
+  summary: "I lead engineering across AI products, distributed systems and cloud infrastructure, staying close to architecture, implementation and production reliability.",
 };
 
 export interface Study {
@@ -14,7 +18,7 @@ export interface Study {
   title: string;
   summary: string;
   role: string;
-  brief: { responsibility: string; decision: string; outcome: string };
+  brief: { scope: string; responsibility: string; decision: string; outcome: string };
   period?: string;
   context?: string;
   diagram?: string;
@@ -40,6 +44,7 @@ export const studies: Study[] = [
     slug: "ai-voice-application",
     diagram: "/diagrams/ai-voice-application.svg",
     brief: {
+      "scope": "A voice tutor coordinating speech, lesson progression and recovery across interruptions and unreliable networks.",
       responsibility: "Designed the voice pipeline and the boundaries between teaching, assessment and conversation.",
       decision: "Keep lesson progression in explicit learner state, with bounded agents for each learning activity.",
       outcome: "Streaming speech, learning agents and recovery coordinated within one learning flow.",
@@ -50,7 +55,7 @@ export const studies: Study[] = [
       "Connecting real-time speech with curriculum flow, ordered playback and recoverable learner state.",
     role: "Architecture & hands-on engineering",
     period: "2025–present",
-    technologies: ["LiveKit", "TypeScript", "PostgreSQL", "Redis", "Langfuse"],
+    technologies: ["LiveKit", "WebRTC", "Silero VAD", "DTLN", "TypeScript", "PostgreSQL", "Redis", "Langfuse", "OpenTelemetry"],
     problem:
       "An AI tutor needs to follow a lesson while responding to a child who may switch between Hindi, English and Hinglish, interrupt a video, or lose connectivity. A fluent answer alone does not make the learning experience coherent.",
     contribution:
@@ -159,9 +164,10 @@ export const studies: Study[] = [
     slug: "aws-cost-intelligence",
     diagram: "/diagrams/aws-cost-intelligence.svg",
     brief: {
+      "scope": "Peak-hour API slowdowns and 5XX failures, with cache scans and file I/O on the request path.",
       responsibility: "Led the investigation from production request behavior to infrastructure signals.",
       decision: "Replace repeated cache scans and move expensive processing into background workers.",
-      outcome: "Cheaper request lookups, separated heavy processing and a repeatable capacity investigation process.",
+      outcome: "~19s → <500ms on the recovered API path; 0% 5XX on validated target paths; ~25% lower AWS spend.",
     },
     category: "Backend reliability · AWS",
     title: "Finding the bottleneck before adding servers.",
@@ -246,7 +252,7 @@ export const studies: Study[] = [
       },
     ],
     outcome:
-      "The work replaced scan-heavy request behavior with cheaper lookups, separated heavy processing and established a repeatable path for capacity investigation.",
+      "Average response time on the recovered API path fell from ~19s to <500ms. The targeted 3.9% 5XX failure rate was eliminated in validation, reaching 0% on those target paths. Evidence-led right-sizing reduced AWS cloud spend by ~25%. Cheaper lookups, separated processing and repeatable load validation gave the team a clearer basis for capacity decisions.",
     lesson:
       "Capacity planning starts with what each request asks the system to do. More instances can hide an expensive request shape without correcting it.",
   },
@@ -254,6 +260,7 @@ export const studies: Study[] = [
     slug: "database-performance",
     diagram: "/diagrams/database-performance.svg",
     brief: {
+      "scope": "Expensive reads and background jobs competing with latency-sensitive API requests.",
       responsibility: "Reviewed data access and execution patterns across platform workflows.",
       decision: "Use lighter reads and bounded concurrency; make background processing an explicit boundary.",
       outcome: "Reusable practices for data reads, asynchronous jobs and evidence-based cache sizing.",
@@ -349,6 +356,7 @@ export const studies: Study[] = [
     slug: "video-streaming",
     diagram: "/diagrams/video-streaming.svg",
     brief: {
+      "scope": "Learning videos that need dependable playback across variable networks and devices.",
       responsibility: "Designed the media publishing and delivery architecture for a learning platform.",
       decision: "Separate encoding from durable storage and deliver adaptive HLS renditions through a CDN.",
       outcome: "An automated publishing path with multiple renditions, independent of application request capacity.",
@@ -462,6 +470,7 @@ export const studies: Study[] = [
       "Razorpay"
     ],
     "brief": {
+      "scope": "Payment events, pending plan changes and usage limits that must resolve to consistent account access.",
       "responsibility": "Built subscription and entitlement workflows for a learning platform.",
       "decision": "Separate gateway events from access policy, with transactional payment updates and explicit grace-period rules.",
       "outcome": "Plan changes, usage quotas and refund eligibility resolved through shared backend rules."
@@ -560,6 +569,7 @@ export const studies: Study[] = [
       "PostgreSQL"
     ],
     "brief": {
+      "scope": "Spoken reading attempts with skipped or repeated words, variable audio quality and learner-specific feedback.",
       "responsibility": "Worked on the backend flow from recorded speech to stored learner feedback.",
       "decision": "Align the transcript with the expected passage before calculating word-level feedback.",
       "outcome": "A structured assessment record with expected words, matched transcript words and per-word feedback."
@@ -653,6 +663,7 @@ export const studies: Study[] = [
       "BullMQ"
     ],
     "brief": {
+      "scope": "Large media uploads that need searchable identity, sharing rules and downstream processing.",
       "responsibility": "Worked on media ingestion, metadata and integrations across the learning platform.",
       "decision": "Separate object transfer from media records, sharing relationships and downstream processing.",
       "outcome": "A media workflow that connects uploaded objects with topics, users, classes and learning-product integrations."
@@ -746,6 +757,7 @@ export const studies: Study[] = [
       "Google Drive"
     ],
     "brief": {
+      "scope": "Curriculum drafts, publication schedules and versioned source files moving through an editorial workflow.",
       "responsibility": "Worked on curriculum authoring, publishing and content-operation services.",
       "decision": "Separate draft content, reusable curriculum structures and publication scheduling.",
       "outcome": "Content blocks, learning objectives and books connected to scheduled delivery and versioned production-file handoffs."
@@ -845,6 +857,7 @@ export const studies: Study[] = [
       "Fintech Primitives"
     ],
     "brief": {
+      "scope": "Investor accounts, verification and orders crossing independently changing provider services.",
       "responsibility": "Worked on backend workflows connecting investor accounts with investment-provider services.",
       "decision": "Keep local account and order references alongside provider identifiers and process bank verification through a queue.",
       "outcome": "Investor workflows connected across verification, purchase orders, recurring plans and account reports."
@@ -943,6 +956,7 @@ export const studies: Study[] = [
       "FFmpeg"
     ],
     "brief": {
+      "scope": "Interactive scenes, narration and assets that must become a reproducible video timeline.",
       "responsibility": "Integrated classroom editing with video export, resolving timeline, asset and rendering issues.",
       "decision": "Compile classroom scenes into a timeline and self-contained render package, then run MP4 rendering in a separate service.",
       "outcome": "An export path with scene and narration timing, packaged assets, asynchronous render progress and downloadable output."

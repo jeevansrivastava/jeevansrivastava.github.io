@@ -6,7 +6,7 @@ import { PrintResume } from "@/components/ui/PrintResume";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "Resume",
-  "Professional experience: backend engineering, platform architecture, AI infrastructure and hands-on engineering leadership.",
+  "Professional experience in AI systems, platform architecture and engineering leadership. Currently Senior Engineering Manager at UOLO.",
   "/resume",
 );
 export default function ResumePage() {
@@ -19,7 +19,8 @@ export default function ResumePage() {
         <h1>Engineering experience.</h1>
         <p>
           Approximately 15 years building software, designing platforms and
-          leading engineering teams. {profile.summary}
+          leading engineering teams. Currently {profile.currentRole} at {profile.company}, with hands-on work across AI systems and cloud
+          infrastructure.
         </p>
         <PrintResume />
       </header>

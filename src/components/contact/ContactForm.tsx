@@ -62,11 +62,17 @@ export function ContactForm() {
           name="message"
           id="message"
           rows={6}
+          placeholder="The technical question, context and kind of input you’re looking for…"
+          aria-describedby="project-brief-help"
           required
           maxLength={5000}
           disabled={status === "submitting"}
         />
       </div>
+      <p className="form-help" id="project-brief-help">
+        A short overview is enough to start. Share the system or decision
+        you’re thinking about and what would make a conversation useful.
+      </p>
       <p className="form-help">
         Your details are sent through Formspree to handle this enquiry. Prefer
         email? <a href={`mailto:${profile.email}`}>Write to me directly.</a>

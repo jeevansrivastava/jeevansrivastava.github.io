@@ -21,6 +21,7 @@ const routes = [
   "/case-studies/curriculum-content-platform",
   "/case-studies/investment-workflows",
   "/case-studies/classroom-video-export",
+  "/work-with-me",
   "/about",
   "/resume",
   "/contact",
@@ -63,6 +64,13 @@ const routes = [
         await page.locator(".notebook-hero").evaluateAll(async (nodes) => {
           await Promise.all(nodes.flatMap((node) => node.getAnimations()).map((animation) => animation.finished.catch(() => {})));
         });
+        // Load below-the-fold logos before checking every image and capturing the page.
+        await page.locator("img").evaluateAll(async (images) => {
+          await Promise.all(images.map(async (image) => {
+            image.loading = "eager";
+            await image.decode().catch(() => {});
+          }));
+        });
         assert.equal(await page.locator("h1").count(), 1, `${route}: one H1`);
         assert.equal(await page.locator("main").count(), 1);
         assert.equal(
@@ -87,6 +95,12 @@ const routes = [
               .getAttribute("content")
           ).length > 20,
         );
+        if (route.startsWith("/case-studies/")) {
+          assert.deepEqual(await page.locator(".study-brief dt").allTextContents(), ["Problem scope", "Architecture intervention", "Production outcome"]);
+        }
+        if (route.startsWith("/case-studies/") || route === "/articles") {
+          assert.equal(await page.locator(".engagement-cta a").getAttribute("href"), "/work-with-me");
+        }
         const dimensions = await page.evaluate(() => ({
           width: innerWidth,
           scroll: document.documentElement.scrollWidth,
@@ -177,7 +191,7 @@ const routes = [
     // Hero actions, feature navigation and page return.
     await page.goto(base);
     await page
-      .getByRole("link", { name: "View case studies", exact: true })
+      .getByRole("link", { name: "Explore My Work", exact: true })
       .click();
     await page.waitForURL(base + "/case-studies");
     await page.getByRole("link", { name: "Inside the architecture" }).click();
@@ -185,7 +199,21 @@ const routes = [
     await page.getByRole("link", { name: "All case studies" }).click();
     await page.waitForURL(base + "/case-studies");
     await page.goto(base);
-    await page.getByRole("link", { name: "View resume", exact: true }).click();
+    const bookingUrl = "https://calendly.com/jeevan-srivastavajj/30min";
+    // Verify outbound navigation without creating a booking or contacting the scheduler.
+    await page.route("https://calendly.com/**", (route) => route.fulfill({ status: 200, contentType: "text/html", body: "<p>Booking destination check</p>" }));
+    await page.locator(".notebook-intro").getByRole("link", { name: "Discuss an Architecture Challenge" }).click();
+    await page.waitForURL(bookingUrl);
+    await page.goto(base + "/work-with-me");
+    assert.equal(await page.locator("#architecture-review, #technical-discussion, #technical-mentoring").count(), 3);
+    await page.getByRole("link", { name: "Discuss an Architecture Challenge" }).click();
+    await page.waitForURL(bookingUrl);
+    await page.goto(base + "/work-with-me");
+    await page.getByRole("link", { name: "Ask about an architecture review" }).click();
+    await page.waitForURL(base + "/contact#project-enquiry");
+    assert.ok(await page.getByLabel("What would you like to discuss?").isVisible());
+    await page.goto(base + "/work-with-me");
+    await page.getByRole("link", { name: "View résumé & experience" }).click();
     await page.waitForURL(base + "/resume");
     await page.evaluate(() => {
       window.__printCalls = 0;
@@ -352,7 +380,9 @@ const routes = [
         "native sketch focus controls and keyboard arrows",
         "four expandable project field notes",
         "no-JS sketch and field notes",
-        "hero CTAs",
+        "hero CTAs, Calendly booking and project enquiry paths",
+        "three selective advisory formats and secondary resume access",
+        "case impact summaries and selective advisory links",
         "featured case and return",
         "resume print action and PDF",
         "404",
@@ -367,7 +397,7 @@ const routes = [
         `${routes.length} routes without JavaScript`,
         "no-JS menu",
       ],
-      note: "Analytics blocked. Form submissions mocked. Local measurements are not field Core Web Vitals.",
+      note: "Analytics blocked. Form submissions and Calendly navigation mocked. Local measurements are not field Core Web Vitals.",
     };
     fs.writeFileSync(
       path.join(artifacts, "validation.json"),

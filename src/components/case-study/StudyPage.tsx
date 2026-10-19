@@ -1,6 +1,7 @@
 import { NotebookPage } from "@/components/layout/NotebookPage";
 import Link from "next/link";
 import { studies, type Study } from "@/content/portfolio";
+import { EngagementCTA } from "@/components/ui/EngagementCTA";
 import { StudyBrief } from "./StudyBrief";
 import { CaseStudyHero } from "./CaseStudyHero";
 import { SystemFlow } from "./SystemFlow";
@@ -54,6 +55,7 @@ export function StudyPage({ study }: { study: Study }) {
           <p>{study.lesson}</p>
         </blockquote>
       </section>
+      <EngagementCTA />
       <nav className="case-next" aria-label="Case study navigation">
         <span>Next case study</span>
         <Link href={`/case-studies/${next.slug}`}>{next.title} →</Link>

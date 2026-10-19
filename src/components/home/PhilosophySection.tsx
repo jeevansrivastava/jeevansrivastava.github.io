@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { profile } from "@/content/portfolio";
 import { BrandMark } from "@/components/ui/BrandMark";
 export function PhilosophySection() {
   return (
@@ -32,10 +33,10 @@ export function PhilosophySection() {
             real-time AI.
           </p>
           <p>
-            As a Senior Engineering Manager, I lead delivery and mentor engineers
-            while staying involved in architecture and implementation. My work
-            connects product workflows with the systems and tools that keep
-            them running.
+            As a {profile.currentRole} at {profile.company}, I lead delivery and
+            mentor engineers while staying involved in architecture and
+            implementation. I care about clear decisions, production reliability
+            and systems the team can understand and operate.
           </p>
           <Link href="/about" className="text-link">
             More about me <span aria-hidden="true">↗</span>

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { profile } from "@/content/portfolio";
 export function pageMetadata(
   title: string,
   description: string,
   path: string,
 ): Metadata {
-  const fullTitle = `${title} | Jeevan Jyoti Srivastava`;
+  const fullTitle = path === "/" ? `${profile.name} | ${profile.role}` : `${title} | ${profile.name}`;
   return {
     title: { absolute: fullTitle },
     description,
@@ -19,7 +20,7 @@ export function pageMetadata(
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: "Jeevan Jyoti Srivastava — Backend systems and AI infrastructure",
+          alt: `${profile.name} — ${profile.role}`,
         },
       ],
     },

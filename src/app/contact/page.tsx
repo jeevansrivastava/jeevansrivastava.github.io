@@ -5,7 +5,7 @@ import { profile } from "@/content/portfolio";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "Contact",
-  "Discuss backend platforms, AI infrastructure and hands-on Staff or Principal engineering opportunities with Jeevan Jyoti Srivastava.",
+  "Connect with Jeevan Jyoti Srivastava about engineering practice, architecture reviews, technical mentoring or a selective advisory conversation.",
   "/contact",
 );
 export default function ContactPage() {
@@ -17,20 +17,22 @@ export default function ContactPage() {
         <h1>
           A direct line.
           <br />
-          <em>Say hello.</em>
+          <em>Let’s compare notes.</em>
         </h1>
         <p>
-          For an engineering opportunity, a question about my work, or a
-          conversation with a fellow engineer.
+          For a question about my work, a focused architecture review, technical
+          mentoring or a conversation with a fellow engineer.
         </p>
       </header>
-      <div className="contact-layout">
+      <div className="contact-layout" id="project-enquiry">
         <section className="contact-details">
-          <h2>You can reach me here</h2>
+          <h2>Start with the question</h2>
           <p>
-            If you’re hiring, I’d like to hear about the team, the engineering
-            scope and how you work remotely. You can also email me directly.
+            Share the technical question, a little context and the kind of input
+            you’re looking for. Advisory conversations depend on scope and
+            availability alongside my current role. You can also email me directly.
           </p>
+          <a href={profile.calendly}>Book a 30-minute architecture conversation ↗</a>
           <a href={`mailto:${profile.email}`}>{profile.email} ↗</a>
           <a href={profile.linkedin}>Connect on LinkedIn ↗</a>
           <a href={profile.github}>Explore GitHub ↗</a>

@@ -24,6 +24,8 @@ The preview server binds only to http://127.0.0.1:3101 and serves the generated 
 ## Content and design
 
 - `src/content/portfolio.ts`: identity links and ten case studies; titles, scope, architecture, decisions, considerations and evidence boundaries.
+- `src/content/consulting.ts`: selective architecture reviews, technical discussions and mentoring topics.
+- `src/app/work-with-me/page.tsx`: selective advisory alongside the current engineering leadership role.
 - `src/content/experience.ts`: resume roles and dates. April 2022 marks engineering management tenure; it is not a verified Senior-title promotion date.
 - `src/components/home/`: homepage narrative and reusable sections.
 - `src/components/case-study/StudyPage.tsx`: shared case-study reading layout.
@@ -46,7 +48,7 @@ CHROME_PATH='/absolute/path/to/chrome' \
 node scripts/verify-portfolio.cjs
 ```
 
-Run the export preview first. `PORTFOLIO_URL` can override its address. The script checks sixteen routes at desktop/tablet/mobile sizes, metadata, headings, links, WCAG A/AA rules supported by axe, keyboard navigation, no-JavaScript access, reduced motion and print output. Contact requests are always mocked; it never sends a real enquiry. It stores screenshots, PDF and results in `docs/portfolio-redesign/evidence/`.
+Run the export preview first. `PORTFOLIO_URL` can override its address. The script checks seventeen routes at desktop/tablet/mobile sizes, metadata, headings, links, WCAG A/AA rules supported by axe, keyboard navigation, no-JavaScript access, reduced motion and print output. Contact requests are always mocked; it never sends a real enquiry. It stores screenshots, PDF and results in `docs/portfolio-redesign/evidence/`.
 
 The existing Formspree endpoint is retained. Failure now preserves the draft; success means the service accepted the request, not proof of inbox delivery. Live ownership and receipt must be confirmed separately before relying on the form. Direct email and profile links are always visible. Analytics configuration is retained; analytics requests are blocked only during local browser validation.
 
