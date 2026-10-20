@@ -4,8 +4,8 @@ import { ArticlesSection } from "@/components/home/ArticlesSection";
 import { EngagementCTA } from "@/components/ui/EngagementCTA";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
-  "Technical writing",
-  "Notes on production AI, cloud performance and architecture decisions from engineering leader Jeevan Jyoti Srivastava.",
+  "Engineering Notes on AI, Backend & Cloud",
+  "Read engineering case studies on AI voice systems, API performance and subscriptions, and explore Jeevan Jyoti Srivastava’s writing on Medium.",
   "/articles",
 );
 export default function ArticlesPage() {

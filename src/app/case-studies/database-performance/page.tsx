@@ -1,12 +1,8 @@
 import { getStudy } from "@/content/portfolio";
 import { StudyPage } from "@/components/case-study/StudyPage";
-import { pageMetadata } from "@/lib/metadata";
+import { studyMetadata } from "@/lib/metadata";
 const study = getStudy("database-performance");
-export const metadata = pageMetadata(
-  study.title,
-  study.summary,
-  "/case-studies/database-performance",
-);
+export const metadata = studyMetadata(study);
 export default function CaseStudy() {
   return <StudyPage study={study} />;
 }

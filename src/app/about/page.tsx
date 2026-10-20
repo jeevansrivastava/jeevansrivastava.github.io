@@ -5,14 +5,24 @@ import { profile } from "@/content/portfolio";
 import { ExpertiseGrid } from "@/components/home/ExpertiseGrid";
 import { ContactCTA } from "@/components/home/ContactCTA";
 import { pageMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { absoluteUrl, personId } from "@/lib/site";
 export const metadata = pageMetadata(
-  "About",
-  "Jeevan Jyoti Srivastava is a Senior Engineering Manager at UOLO, working across AI products, backend platforms and cloud infrastructure, with selective technical advisory availability.",
+  "About — Engineering Leader",
+  "Meet Jeevan Jyoti Srivastava, Senior Engineering Manager at UOLO, with approximately 15 years in backend engineering, AI systems and cloud architecture.",
   "/about",
 );
 export default function AboutPage() {
   return (
     <NotebookPage label="About me" number="02" variant="about">
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "@id": `${absoluteUrl("/about")}#profile`,
+        url: absoluteUrl("/about"),
+        name: `About ${profile.name}`,
+        mainEntity: { "@id": personId },
+      }} />
       <header className="page-intro portrait-intro">
         <div className="portrait-intro-copy">
           <p className="eyebrow">About / Jeevan Jyoti Srivastava</p>

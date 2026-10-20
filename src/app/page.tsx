@@ -7,8 +7,8 @@ import { ExpertiseGrid } from "@/components/home/ExpertiseGrid";
 import { ContactCTA } from "@/components/home/ContactCTA";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
-  "Engineering Leader · AI Systems & Cloud Architecture",
-  "Jeevan Jyoti Srivastava leads engineering across AI products, distributed systems and cloud infrastructure. Explore architecture decisions, production outcomes and hands-on experience.",
+  "AI & Backend Architecture",
+  "Jeevan Jyoti Srivastava, engineering leader at UOLO. Explore AI voice systems, backend architecture, AWS optimization and production case studies.",
   "/",
 );
 export default function Home() {

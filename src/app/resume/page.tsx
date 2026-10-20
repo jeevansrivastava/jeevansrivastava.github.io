@@ -5,8 +5,8 @@ import { profile } from "@/content/portfolio";
 import { PrintResume } from "@/components/ui/PrintResume";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
-  "Resume",
-  "Professional experience in AI systems, platform architecture and engineering leadership. Currently Senior Engineering Manager at UOLO.",
+  "Engineering Resume",
+  "Explore Jeevan Jyoti Srivastava’s engineering experience across backend platforms, AI systems and cloud infrastructure. Senior Engineering Manager at UOLO.",
   "/resume",
 );
 export default function ResumePage() {

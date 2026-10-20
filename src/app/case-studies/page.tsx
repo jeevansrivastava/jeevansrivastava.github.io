@@ -5,8 +5,8 @@ import { PageDoodle } from "@/components/ui/PageDoodle";
 import { FeaturedCaseStudies } from "@/components/home/FeaturedCaseStudies";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
-  "Engineering case studies",
-  "Engineering case studies in voice AI, backend reliability, data access, media delivery, subscriptions, speech assessment, content operations, investment workflows and classroom export.",
+  "AI & Backend Architecture Case Studies",
+  "Explore ten engineering case studies covering real-time AI, AWS cost optimization, database performance, streaming and backend workflows.",
   "/case-studies",
 );
 export default function CaseStudiesIndex() {

@@ -10,7 +10,7 @@ export function CaseStudyHero({ study }: { study: Study }) {
       <div className="case-cover-grid">
       <div>
       <p className="eyebrow">{study.category}</p>
-      <h1>{study.title}</h1>
+      <h1>{study.seo.title}</h1>
       <p className="case-summary">{study.summary}</p>
       </div>
       <ProjectArtwork kind={studies.indexOf(study)} />

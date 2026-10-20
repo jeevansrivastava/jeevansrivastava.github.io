@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { profile } from "@/content/portfolio";
+import { profile, type Study } from "@/content/portfolio";
+import { absoluteUrl } from "@/lib/site";
 export function pageMetadata(
   title: string,
   description: string,
   path: string,
+  type: "website" | "article" = "website",
 ): Metadata {
-  const fullTitle = path === "/" ? `${profile.name} | ${profile.role}` : `${title} | ${profile.name}`;
+  const fullTitle = path === "/" ? `${profile.name} | ${title}` : `${title} | ${profile.name}`;
   return {
     title: { absolute: fullTitle },
     description,
@@ -14,7 +16,10 @@ export function pageMetadata(
       title: fullTitle,
       description,
       url: path,
-      type: "website",
+      type,
+      siteName: profile.name,
+      locale: "en_US",
+      ...(type === "article" ? { authors: [absoluteUrl("/about")] } : {}),
       images: [
         {
           url: "/og-image.png",
@@ -31,4 +36,13 @@ export function pageMetadata(
       images: ["/og-image.png"],
     },
   };
+}
+
+export function studyMetadata(study: Study): Metadata {
+  return pageMetadata(
+    study.seo.title,
+    study.seo.description,
+    `/case-studies/${study.slug}`,
+    "article",
+  );
 }

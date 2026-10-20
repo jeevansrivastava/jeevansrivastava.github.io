@@ -6,8 +6,8 @@ import { profile } from "@/content/portfolio";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata(
-  "Advisory — Architecture Reviews & Technical Conversations",
-  "Selective architecture reviews, technical discussions and engineering mentoring alongside Jeevan Jyoti Srivastava’s current engineering leadership role, depending on scope and availability.",
+  "AI & Backend Architecture Advisory",
+  "Discuss AI systems, backend architecture and cloud reliability with Jeevan Jyoti Srivastava. Selective reviews and mentoring, subject to availability.",
   "/work-with-me",
 );
 

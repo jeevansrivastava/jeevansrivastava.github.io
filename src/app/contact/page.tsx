@@ -5,7 +5,7 @@ import { profile } from "@/content/portfolio";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "Contact",
-  "Connect with Jeevan Jyoti Srivastava about engineering practice, architecture reviews, technical mentoring or a selective advisory conversation.",
+  "Contact Jeevan Jyoti Srivastava for engineering conversations, AI and backend architecture reviews, or technical mentoring, subject to availability.",
   "/contact",
 );
 export default function ContactPage() {

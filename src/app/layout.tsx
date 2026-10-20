@@ -10,16 +10,18 @@ import "./consulting.css";
 import { LeftPanel } from "@/components/layout/LeftPanel";
 import { MobileHeader } from "@/components/layout/MobileHeader";
 import { profile } from "@/content/portfolio";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { absoluteUrl, personId, siteUrl } from "@/lib/site";
 import { BrandMark } from "@/components/ui/BrandMark";
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jeevansrivastava.com"),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: `${profile.name} | ${profile.role}`,
+    default: `${profile.name} | AI & Backend Architecture`,
     template: "%s | Jeevan Jyoti Srivastava",
   },
   description:
     "Engineering leadership and hands-on architecture across AI products, distributed systems and cloud infrastructure. Explore the work, decisions and experience of Jeevan Jyoti Srivastava.",
-  authors: [{ name: profile.name }],
+  authors: [{ name: profile.name, url: absoluteUrl("/about") }],
   robots: "index, follow",
 };
 export default function RootLayout({
@@ -76,27 +78,30 @@ export default function RootLayout({
           id="ga-init"
           strategy="afterInteractive"
         >{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-13F34CY3BV');`}</Script>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
+        <JsonLd data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
               "@type": "Person",
+              "@id": personId,
               name: profile.name,
-              image: "https://jeevansrivastava.com/jeevan-srivastava.webp",
+              image: absoluteUrl("/jeevan-srivastava.webp"),
               jobTitle: profile.currentRole,
               worksFor: { "@type": "Organization", name: profile.company },
-              url: "https://jeevansrivastava.com",
-              sameAs: [profile.github, profile.linkedin],
-              knowsAbout: [
-                "Backend engineering",
-                "AI infrastructure",
-                "Distributed systems",
-                "Cloud architecture",
-              ],
-            }),
-          }}
-        />
+              url: absoluteUrl("/about"),
+              sameAs: [profile.github, profile.linkedin, profile.medium],
+              knowsAbout: ["Backend engineering", "AI infrastructure", "Distributed systems", "Cloud architecture"],
+            },
+            {
+              "@type": "WebSite",
+              "@id": `${siteUrl}/#website`,
+              name: profile.name,
+              url: absoluteUrl("/"),
+              inLanguage: "en",
+              publisher: { "@id": personId },
+            },
+          ],
+        }} />
       </body>
     </html>
   );

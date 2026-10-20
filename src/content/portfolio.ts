@@ -14,6 +14,8 @@ export const profile = {
 
 export interface Study {
   slug: string;
+  seo: { title: string; description: string };
+  relatedSlugs: string[];
   category: string;
   title: string;
   summary: string;
@@ -42,6 +44,8 @@ export interface Study {
 export const studies: Study[] = [
   {
     slug: "ai-voice-application",
+    seo: {"title": "Real-Time AI Voice Tutor Architecture", "description": "Explore an AI voice tutor built with LiveKit, recoverable learner state, ordered audio playback and explicit curriculum progression."},
+    relatedSlugs: ["speech-assessment", "curriculum-content-platform"],
     diagram: "/diagrams/ai-voice-application.svg",
     brief: {
       "scope": "A voice tutor coordinating speech, lesson progression and recovery across interruptions and unreliable networks.",
@@ -162,6 +166,8 @@ export const studies: Study[] = [
   },
   {
     slug: "aws-cost-intelligence",
+    seo: {"title": "AWS Cost Optimization & API Performance", "description": "How targeted API recovery reduced response time from about 19 seconds to under 500ms, alongside evidence-led AWS right-sizing and cost reduction."},
+    relatedSlugs: ["database-performance", "video-streaming"],
     diagram: "/diagrams/aws-cost-intelligence.svg",
     brief: {
       "scope": "Peak-hour API slowdowns and 5XX failures, with cache scans and file I/O on the request path.",
@@ -258,6 +264,8 @@ export const studies: Study[] = [
   },
   {
     slug: "database-performance",
+    seo: {"title": "Node.js & MongoDB Performance Optimization", "description": "A backend case study on lighter MongoDB reads, bounded concurrency and separating background jobs from latency-sensitive Node.js APIs."},
+    relatedSlugs: ["aws-cost-intelligence", "media-asset-workflows"],
     diagram: "/diagrams/database-performance.svg",
     brief: {
       "scope": "Expensive reads and background jobs competing with latency-sensitive API requests.",
@@ -354,6 +362,8 @@ export const studies: Study[] = [
   },
   {
     slug: "video-streaming",
+    seo: {"title": "Adaptive HLS Streaming with AWS & FFmpeg", "description": "Designing adaptive video delivery with FFmpeg, HLS, Amazon S3 and CloudFront for learners on inconsistent connections."},
+    relatedSlugs: ["media-asset-workflows", "classroom-video-export"],
     diagram: "/diagrams/video-streaming.svg",
     brief: {
       "scope": "Learning videos that need dependable playback across variable networks and devices.",
@@ -457,6 +467,8 @@ export const studies: Study[] = [
   },
   {
     "slug": "subscription-entitlements",
+    seo: {"title": "Subscription & Entitlement Architecture", "description": "Connecting Razorpay payment events, subscription changes and usage quotas with transactional access rules and explicit grace periods."},
+    relatedSlugs: ["investment-workflows", "ai-voice-application"],
     "category": "Subscriptions · Product infrastructure",
     "title": "Keeping access in step with a subscription.",
     "summary": "Coordinating payment events, plan changes and usage limits so product access follows a clear set of rules.",
@@ -556,6 +568,8 @@ export const studies: Study[] = [
   },
   {
     "slug": "speech-assessment",
+    seo: {"title": "Speech Assessment Pipeline & Word Alignment", "description": "Connecting audio preparation, Google Speech-to-Text and transcript alignment to produce word-level reading feedback for learners."},
+    relatedSlugs: ["ai-voice-application", "database-performance"],
     "category": "Speech assessment",
     "title": "Turning a spoken attempt into useful feedback.",
     "summary": "Connecting audio preparation, transcription and word alignment so reading feedback stays attached to the learner’s attempt.",
@@ -649,6 +663,8 @@ export const studies: Study[] = [
   },
   {
     "slug": "media-asset-workflows",
+    seo: {"title": "Media Asset Processing Workflows", "description": "Connecting S3 multipart uploads with media records, sharing permissions and downstream processing in a learning platform."},
+    relatedSlugs: ["video-streaming", "curriculum-content-platform"],
     "category": "Media assets · Upload & delivery",
     "title": "An upload is only the start of a media workflow.",
     "summary": "Connecting large-file uploads with media records, topic metadata, sharing and downstream learning experiences.",
@@ -743,6 +759,8 @@ export const studies: Study[] = [
   },
   {
     "slug": "curriculum-content-platform",
+    seo: {"title": "Curriculum Content Platform Architecture", "description": "Structuring curriculum drafts, scheduled publishing and versioned source-file handoffs with PostgreSQL, Redis and BullMQ."},
+    relatedSlugs: ["ai-voice-application", "media-asset-workflows"],
     "category": "Curriculum · Content operations",
     "title": "From a content draft to the right classroom.",
     "summary": "Structuring curriculum content, scheduling publication and tracking file handoffs across the content-production workflow.",
@@ -843,6 +861,8 @@ export const studies: Study[] = [
   },
   {
     "slug": "investment-workflows",
+    seo: {"title": "Investment Workflow Architecture", "description": "Connecting investor accounts, bank verification, purchase orders and recurring plans through a NestJS backend and provider integrations."},
+    relatedSlugs: ["subscription-entitlements", "database-performance"],
     "category": "Investment infrastructure",
     "title": "Keeping an investment journey connected across services.",
     "summary": "Connecting investor accounts, bank verification, purchase orders, mandates and reports through a shared backend.",
@@ -943,6 +963,8 @@ export const studies: Study[] = [
   },
   {
     "slug": "classroom-video-export",
+    seo: {"title": "Classroom Video Export Pipeline", "description": "Turning interactive classroom scenes into video through explicit timelines, narration timing, packaged assets and asynchronous rendering."},
+    relatedSlugs: ["video-streaming", "media-asset-workflows"],
     "category": "Classroom authoring & export",
     "title": "Taking an interactive classroom beyond the browser.",
     "summary": "Adapting classroom authoring and video-export workflows so scenes, narration and assets can become a rendered lesson.",
